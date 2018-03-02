@@ -35,15 +35,19 @@
 
 %mainmatter
 \mainmatter
+\input{Introduction/Introduction.tex}
+\input{InitialProblemstatement/Case/Casedescription.tex}
+\input{Grundfoss/Grundfoss.tex}
 \input{InitialProblemstatement/InitialProblemstatment.tex}
 \input{StakeholderAnalysis/StakeholderAnalysis.tex}
-\input{Introduction/Introduction.tex}
-\input{Grundfoss/Grundfoss.tex}
+\input{UR/AboutUniversalRobots.tex}
 \input{Regulations/regulationer.tex}
 %%begin novalidate
 %backmatter
 \appendix
 \listoftodos
+\printbibliography[heading=bibintoc]
+\label{bib:mybiblio}
 \titleformat{%command
   \chapter
 }[%shape

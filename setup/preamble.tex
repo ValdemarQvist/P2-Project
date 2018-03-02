@@ -132,14 +132,11 @@
 % Bibliography
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bibliography for each chapter
-\usepackage[sectionbib]{chapterbib}
-% Custom bibliograhy - used in the list of papers
-%\usepackage{multibib}
-%\newcites{main}{Main References}
-%\newcites{other}{Other Publications}
-% Change [1,2,3,4] into [1-4]
-\usepackage{cite}
+\usepackage[backend=bibtex,
+  bibencoding=utf8
+  ]{biblatex}
+\addbibresource{bib/mybib}
+\usepackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
