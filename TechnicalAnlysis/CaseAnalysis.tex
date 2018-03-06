@@ -1,0 +1,29 @@
+ \chapter{Technical Analysis} \label{TechAnalysis}
+ 
+ In this chapter a technical analysis of the work-cell will be described.\\
+ 
+ \section{Work-cell}
+ 
+ \subsection{Balancing machine}
+ 
+ \subsection{Leak testing machine}
+ 
+ \subsection{Laser engraver}
+ 
+ \subsection{Queue table}
+ 
+ \section{Signals}
+ 
+ When the robot needs to operate inside the work-cell it needs to have some systems that will tell it when to pick and place the rotor.\\
+ Hereby some candidates are chosen:\\
+ 1. Lidar\\
+ 2. Pressure sensors\\
+ 3. ROS\\
+ 
+ 1. Lidar sensors can be used due to their highly concentrated 3D-point clouds. This will help the cobot to determine the spot for the different activities inside the work-cell.\\
+ 
+ 2. Pressure sensors which is included in the cobot, can be used as a weight distributor. Where the cobots payload of the rotor will be released when placed, and then the pressure sensor on the machines, could determine whether it was placed correctly.\\
+ \todo{gerne flere forslag til placering rotor}
+ 
+ 3. All of the above could be managed with the interface of ROS, where a service program could be included to send messages through the topics of both cobot and machine. Hereby the two collaborating systems could interact between each other and send commands that could be interpreted by the cobot.\\
+ 
