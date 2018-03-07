@@ -6,10 +6,28 @@
  
  \subsection{Balancing machine}
  
+ The balancing machine is 1.65m in width and 2.0m in length.\\
+ The balancing machine is only capable of testing 1 rotor at a time.\\
+ The machine consists of 2 rigid pedestals, with bearings and suspension on the top, supporting a mounting platform where the rotor will be placed hanging on the pedestals.\\
+
+The test will function by the machine turning the rotor, while a vibration sensor detects differences of unbalance in the rotor. From that information it can tell where to add or remove weights, to balance the rotor, after which a visual inspection is required.
+
+Safety measures might have to be taken, if an employee has to enter the work-space to inspect the rotor.
+ 
  \subsection{Leak testing machine}
  
- \subsection{Laser engraver}
+ The leak testing machine is 1.2m wide (with control pad), and 1.8m of length.\\ 
+ It is used to test the rotors for a leakage, and it can hold up to 2 rotors per test.\\
+ Inside the system the rotors are placed in some valves that will tighten around the rotor, and afterwards placed under a certain air pressure, with the valves on the rotor closed. Then the pass/fail decision will be made and the work-cell can continue \cite{LEAK}.\\
+ The Machine will then signal the result of the test.\\
  
+ The rotors will need to be placed almost simultaneously inside the machine. The Queue table will play a big role of the flow in the work-cell. Installing it closest to the leak-machine will be revised, since the cobot will need to place the newly balanced rotor, and the queued rotor in a matter of seconds.\\ 
+ In this motion a safety standard will have to be considered, since the speed and the force of the cobot will be at a high level, and cant be slowed down to get the desired requirement of 26 seconds.\\
+ 
+ \subsection{Laser engraver}
+ The engraving machine has a dimension of 0,7m width and 1,3m in length.\\
+ It is used to engrave the part number id of rotor, there is space for one rotor per cycle.\\
+ The engraver is made with a laser engraver from ROFIN, it uses a set of mirrors to control the laser beam\cite{laser}. The rotor is placed in a fixture inside the engraving machine,then a door that protect people from the harmful laser beam, has to be closed, this can be done from a foot pedal. When the engraving is done the door opens and the rotor can be stored at the pallet.   
  \subsection{Queue table}
  
  \section{Signals}
@@ -19,6 +37,7 @@
  1. Lidar\\
  2. Pressure sensors\\
  3. ROS\\
+ 4. cameras.\\
  
  1. Lidar sensors can be used due to their highly concentrated 3D-point clouds. This will help the cobot to determine the spot for the different activities inside the work-cell.\\
  
@@ -27,3 +46,8 @@
  
  3. All of the above could be managed with the interface of ROS, where a service program could be included to send messages through the topics of both cobot and machine. Hereby the two collaborating systems could interact between each other and send commands that could be interpreted by the cobot.\\
  
+ 4.Industrial robots might use extra safety precautions, to decrease the probability of incidents happening. This could be extra sensors detecting when humans enter, or leave their designated workspace. For caged robots, the door to the cage must usually be closed in order for the robot to run, but you might also want other more reactive ways of ensuring the safety of the personal, particularly when using collaborative robots. One of the most used sensors on these kind of robots would be a collision detection sensor. This allows the robot to register when colliding with a soft surface, and the ability to then either stop, or reduce speed.\\
+
+Many other types of safety sensors might be needed when humans are working side by side with robots. This could include cameras, lasers or pressure sensors. Anything that can help letting the robots know, that humans are present.\\
+
+When working in a production, that require the robots to pick up parts, and place them elsewhere, it might be a very good idea to have a part detection sensor. This sensor tells the robot whether it picked something up or not, and potentially if it is picked up in the right way. If something goes wrong, the robot might either send an error message to an operator, or try to repeat the task, depending on the configuration.\\
