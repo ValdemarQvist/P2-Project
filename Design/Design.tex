@@ -2,7 +2,8 @@
 
 \section{Denahvit Hardenbeg}
 
-Denahvit Hardenberg or DH, is a method to compute every joint/axis into parameters of the coordinate systems.\\
+In order to enable the UR5 on the flexible workstation to locate itself and its surroundings within a space, the DH (Denahvit Hardenberg) method is used.\\ 
+The DH method is a method which can be used to compute every joint/axis into parameters of the coordinate systems.\\
 These descriptions of the system can be used to translate every point and every movement of the robotic manipulator, with the help of forward kinematic.\\
 Initially the start is to locate all of the coordinate systems, as seen in \ref{fig:DH-Parameters}.\\ 
 \begin{figure}[h]
@@ -28,3 +29,30 @@ Starting from left to right at the top of the table, the alpha-1 is used to comp
 It can also be seen from the table that the distance between Zi and Zi-1 is Length2, since they are parallel to each other.\\ 
 The distance between Xi-1 and Xi is 0 since they cross each other on the perpendicular line, which means that in that point the new coordinate system should be placed.\\
 
+\subsection{DH parameters for UR 5}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c c||} 
+ \hline
+ i & \alpha_{i}-1 & a_{i}-1 & d_{i} & \theta_{i} \\ [0.5ex] 
+ \hline\hline
+ 1 & 90 & 89.2 & 0 & \theta_{1} \\ 
+ 2 & 0 & 425 & 0 & \theta_{2} \\
+ 3 & 0 & 392 & 0 & \theta_{3} \\
+ 4 & 90 & 0 & 109.3 & \theta_{4} \\
+ 5 & -90 & 0 & 94.75 & \theta_{5} \\ 
+ 6 & 0 & 0 & 82.5 & \theta_{6} \\[1ex] 
+ \hline
+\end{tabular}
+\caption{Table to test captions and labels}
+\label{table:1}
+\end{table}
+
+\section{Forward Kinematics}
+
+\section{Conclusion}
+
+Describing a robot with forward kinematics and Denahvit Hardenberg parameters is used to locate the different joints and the tool in 3D-space, so the robot can be manipulated and used for various tasks.\\
+Looking at Denahvit Hardenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinatesystems is located.\\
+Forward kinematics is the starting point of selecting the DH-parameters, when we know the point Z1-1 and Z1 we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into Matlab and visualize the robot and locate the robot so the tasks can be preformed.\\
