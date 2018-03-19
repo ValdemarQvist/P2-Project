@@ -33,6 +33,10 @@
 \usepackage[utf8]{inputenc}
 % Make latex understand and use the typographic
 % rules of the language used in the document.
+\usepackage{newunicodechar}
+
+%% the first is the “unknown minus” (U+2212), the second is a hyphen
+\newunicodechar{−}{-}
 \usepackage[danish,english]{babel}
 % Use the vector font Latin Modern which is going
 % to be the default font in latex in the future.
@@ -52,16 +56,20 @@
 \usepackage{graphicx}
 % Set up how figure and table captions are displayed
 \usepackage{caption}
+\usepackage{subcaption}
 \captionsetup{%
   font=footnotesize,% set font size to footnotesize
   labelfont=bf % bold label (e.g., Figure 3.2) font
 }
 % Make the standard latex tables look so much better
 \usepackage{array,booktabs}
-\usepackage{tabularx}
 % Enable the use of frames around, e.g., theorems
 % The framed package is used in the example environment
 \usepackage{framed}
+\usepackage{tabularx}
+% Enable the use of frames around, e.g., theorems
+% The framed package is used in the example environment
+
 % Create beautiful plots using TikZ and PGFPLOTS
 \usepackage{tikz,pgfplots}
 \usetikzlibrary{patterns}
@@ -157,7 +165,14 @@
   textwidth=\marginparwidth, %set the width of the todonotes
   textsize=scriptsize, %size of the text in the todonotes
   ]{todonotes}
-
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabu}
+\usepackage{tabularx}
+\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage{gensymb}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperlinks
 % http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
