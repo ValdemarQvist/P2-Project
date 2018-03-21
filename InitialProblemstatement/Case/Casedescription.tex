@@ -1,10 +1,10 @@
 \section{Case description} \label{ch:case description}
 
 In this project, we are going to focus on the Universal Robot, UR5 which is an industrial manipulator.\\
-The UR5 is going to assist in the balancing and leak test of a L40 rotor see \ref{fig:rotor} that is being produced at Grundfos. The L40 rotor is arriving at the work-cell via a conveyor belt. The rotor has to go through a balancing machine, where the rotor is placed in a drawer, after that it has to go through a visual inspection, before it has to be leak tested.\\
-The leak testing machine can test two rotors per load, when the leak test is done, the machine will give a signal if the rotor has passed the test or not. If the rotor passes, it will be placed in an engraving machine that prints the ID of the rotor, after that it will be placed on a pallet, when it is full it will send a signal to a Grundfos employee to replace the pallet.\\ 
-In between the leak machine and the engraving station we can utilize a table as a buffer which has 100 drilled holes for the rotor to be temporarily stored, furthermore the rotor has to has to go through this cycle in 26 seconds or less.\\
-    
+The UR5 is going to assist in the balancing and leak test of a L40 rotor see \ref{fig:rotor} that is being produced at Grundfos. The L40 rotor arrives at the work-cell via a conveyor belt. The rotor has to go through a balancing machine, where the rotor is placed in a drawer. It must then pass a visual inspection performed by an employee, before it is sent to the leak testing machine.\\
+The leak testing machine can test two rotors per load, and when the leak test is comeplete, the machine will give a signal if the rotor has passed the test or not. The rotor will then be placed in an engraving machine which prints an ID onto the rotor. It will then moved to the output pallet, which will be moved to another location, and replaced with a new pallet by an employee.\\ 
+After being processed in the leak testing machine, the rotors can be placed on a queue table, until the engraving machine is ready. Each rotor must undergo this entire process in 26 seconds or less.\\
+
 
 \begin{figure}
     \centering

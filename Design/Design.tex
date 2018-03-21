@@ -3,7 +3,7 @@
 \section{Denavit-Hartenberg}
 
 In order to enable the UR5 on the flexible workstation to locate itself and its surroundings within a space, the DH (Denavit-Hartenberg) method is used.\\ 
-The DH method is a method which can be used to compute every joint/axis into parameters of the coordinate systems.\\
+The DH method can be used to compute every frame into parameters.\\
 These descriptions of the system can be used to translate every point and every movement of the robotic manipulator, with the help of forward kinematic.\\
 Initially the start is to locate all of the coordinate systems, as seen in \ref{table:DH-table}.\\ 
 
@@ -43,9 +43,9 @@ Then the angles and the distance from each coordinate system is computed and set
 \end{table}
 
 As seen in \ref{fig:DH-Table},the coordinate systems is used to trace every step of each axis.\\
-Starting from left to right at the top of the table, the alpha-1 is used to compute the difference between the angle between Zi and Zi-1, which is 0, due to the fact that they keep the same angle from Zi to zi-1.\\
-It can also be seen from the table that the distance between Zi and Zi-1 is Length2, since they are parallel to each other.\\ 
-The distance between Xi-1 and Xi is 0 since they cross each other on the perpendicular line, which means that in that point the new coordinate system should be placed.\\
+Starting from left to right at the top of the table, the $\alpha-1$ is used to compute the differences of the angles between $Z_{i}$ and $Z_{i-1}$, which is 0, due to the fact that they keep the same angle from $Z_{i}$  to $Z_{i-1}$.\\
+It can also be seen from the table that the distance between $Z_{i}$ and $Z_{i-1}$ is Length2, since they are parallel to each other.\\ 
+The distance between $X_{i-1}$ and $X_i$ is 0 since they cross each other on the perpendicular line, which means that in that point the new coordinate system should be placed.\\
 \newpage
 \subsection{DH parameters for UR 5}
 
@@ -70,47 +70,26 @@ The distance between Xi-1 and Xi is 0 since they cross each other on the perpend
 \end{table}
 
 \section{Forward Kinematics}
-Through the use of forward kinematics, it is possible to calculate the position of the end-effector, by using the joint angles, the most used method is Denavit-Hartenberg's computation method for forward kinematics, which is described in "John J. Craig - Introduction to robotics"\cite{JohnC}.\\
-The computation sequence starts from the base of the robot manipulator, and goes through all the chains of links, aswell as joints, and ends at the position of the end-effector.\\
-A six step method is used to acquire the joints coordinate frames.\\
-\begin{itemize}
-    \item Step 1: Identify the joint axis's, and draw a line for each of the identified joint axis's, as shown on figure \ref{fig:FK1} with the red lines.
-    \item Step 2: A common orthogonal is identified. If the axis's do not intersect with each other, then the shortest distance between them, has to be found, as indicated by the green lines on figure \ref{fig:FK1}.
-    \item Step 3: The Zi axis, should be assigned to be in the same direction as the axis's of the joints. As indicated on figure \ref{fig:FK2}.
-    \item Step 4: The Xi axis of the joint frame, has to be assigned the same as the common orthogonal of the two frames. If the two frames intersect with each other, the Xi axis is assigned as to be the normal to the plane, containing those two axes. On figure \ref{fig:FK2} Xi has been assigned as the orthogonal, because there are no intersecting joint frames in the example.
-    \item Step 5: The Yi axis can be completed by using a standard coordinate system. This step is optional, for the reason that the Yi axis is not really being used. 
-    \item Step 6: Assign as many link parameters as possible to be the value of zero, to ease the calculations.
-\end{itemize}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=9cm]{Design/FK1.PNG}
-    \caption{Figure of step 1 and 2, the red lines are the join axes, and green is the orthogonal between the axis's\cite{KinePics}.}
-    \label{fig:FK1}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=9cm]{Design/FK2.PNG}
-    \caption{Step 3,where the Z and X axis is assigned to form a plane\cite{KinePics}.}
-    \label{fig:FK2}
-\end{figure}
-
 
 \newpage
 \section{Inverse Kinematics}
-Inverse kinematics is used to compute the joint angles from a given position and orientation of an object\cite{JohnC}. The inverse kinematic can by setup from two aspects, one is that geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution where the inverse kinematics is setup in maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
+Inverse kinematics is used to compute the joint angles from a given position and orientation of an object\cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution where the inverse kinematics is set up in MATLAB, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
 \section{Conclusion}
 
 Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in 3D-space, so the robot can be manipulated and used for various tasks.\\
 Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems is located.\\
-Forward kinematics is the starting point of selecting the DH-parameters, when we know the point Z1-1 and Z1 we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into Matlab and visualize the robot and locate the robot so the tasks can be performed.\\
+Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{1-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and locate the robot so the tasks can be performed.\\
 
 \chapter{Ideal Work-cell}\label{IdealWorkCell}
 
--> Billede af workcell med mål og reach.\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=9cm]{Design/Work_cell_3.png}
+    \caption{work-cell with measurements and reach}
+    \label{fig:workcellMR}
+\end{figure}
 
-When looking at \ref{}, a reachable and systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
+When looking at \ref{fig:workcellMR}, a systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
 Here is some sections about what is needed of the ideal work-cell.
 
 \section{Dexterous workspace}
@@ -122,7 +101,7 @@ The reason that the dexterous workspace is considered a solution to the work-cel
 
 \section{Safety}
 
-To keep the production safe and manageable, some of the safety devices is chosen:
+To keep the production safe and manageable, some of the safety devices are chosen:
 
 \begin{itemize}
     \item Light Curtain
@@ -133,17 +112,17 @@ The light curtain provides a signal when the curtain is broken, see \ref{SafetyD
 This will be used to send a signal to the UR5 to either stop or slow down the production, so a person safely can enter the cell, without getting serious damages.\\
 
 The Lidar is commonly used in production, see \ref{SafetyDevices}.
-This threshold can be used to measure when a person enters a hazardous distance towards the UR5.\\
+This threshold can be used to measure when a person enters the hazardous work area of the UR5.\\
 All of the above is a must since the UR5 is carrying a metal rotor with sharp edges, so the person wont be gauged.\\
 
 \subsection{Safety Requirements}
 
 The most important solution for the safety of the work-cell, is the ISO 10218-2:2011, see \ref{ISO2}.\\
-When installing a new robot for a production line, some standards is required. These standards of the ISO can present which of the areas needed to be looked at.\\
+When installing a new robot for a production line, some standards is required. These standards of the ISO can present which of the areas needed to be acted upon.\\
 
 \section{Placement Sensors}
 
-To ensure the work-flow some intelligent placement sensors must be implemented. Some of the possible solutions is chosen:\\
+To ensure the work-flow some intelligent placement sensors must be implemented. Some of the possible solutions are chosen:\\
 
 \begin{itemize}
     \item Lidar
@@ -157,6 +136,57 @@ These signals can be used for the cobot to get a better work-flow and also deter
 The photocell sensors can be used for a quicker work-flow, since it will detect the rotors when they are in the correct place to be picked up, see \ref{ref:PlacementS}.\\
 
 Depth sensing cameras can determine the distance from end-effector to the desired object, see \ref{ref:PlacementS}. This can be used to derive the distance from the certain machine where the rotor has to be placed.\\
-When located the trajectory of the placement of the rotor can be simplified.
 
 \chapter{Ideal Robot}\label{IdealRobot}
+
+The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible. 
+
+\section{Optimal speed}
+
+The robot has 7 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 7, which will give the manipulator 3.7142 seconds to carry out the task.\\
+Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formular for the speed of the cobot can be found.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm]{Design/idealrobotcalc.png}
+    \caption{Calculations of speed with 5 seconds delay on one station}
+    \label{fig:calculations}
+\end{figure}
+\newpage
+5 seconds in one station means that the other stations needs to be cut down with 0.2 seconds each.\\
+So the optimal speed for translations would be 3.5 seconds.
+
+\section{optimal reach}
+
+The manipulator must be able to reach all machines, without having to move its base. Given the work-cell design, this means the robot will need a reach of 2 meters. \\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{Design/Work_cell_3.png}
+    \caption{Work-cell with measurements and reach}
+    \label{fig:workcell}
+\end{figure}
+
+\section{optimal sensors}
+
+The robot should be able to identify humans, and collisions must be risk free, and not disrupt the work-flow. Optimally, the robot should also be able to identify what object it is holding, and if it is damaged or not. Additionally, the robot must be able to place the rotors correctly in the machines, using a depth sensing camera. \ref{depthcam}\\
+The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor\ref{pressure}. 
+
+\subsection{max payload}
+
+The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
