@@ -56,12 +56,10 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
  
  The leak testing machine, see \ref{fig:Leak testing machine} is 1.2m wide (with control pad), and 1.8m of length.\\ 
  It is used to test the rotors for a leakage, and it can hold up to 2 rotors per test.\\
- Inside the system the rotors are placed in a cylinder that will tighten around the rotor, and afterwards placed under a certain air pressure, with the valves on the rotor closed. Then the pass/fail decision will be made and the work-cell can continue \cite{LEAK}.\\
- The Machine will then signal the result of the test.\\
- 
+ The rotor is placed standing upright with the longest part of the ensemble facing in to the hole of the cylinder. Then the leak machine will pressurize the rotor to a preset.\\
+ The transducer inside the leak machine will be put in to zero state, and the different pressures will be applied. After the stabilization the rotor will then be compared to the transducer towards the different pressure volumes, if the volumes differ too much an alarm limit will be triggered, and the visual signal lights will light red and await a operator to activate it again.\\
+ When the rotor passes a green light will indicate the pass and the hatches around the rotor will be released and the pressure will be stabilized to the current atmosphere  \cite{LEAK},\cite{LEAK2}.\\
 The UR5 needs to point the rotors in a 45 degree manner when inserting it into the cylinder, so that the rotor can be placed with a sliding trajectory.\\
-The rotor needs to stand upright with the longest part of the ensemble facing in to the hole of the cylinder. 
-\todo{signals}
  
  \begin{figure}[h]
     \centering
@@ -97,9 +95,9 @@ The rotor needs to stand upright with the longest part of the ensemble facing in
 
  
   \subsection{Lidar} 
-  Lidar sensors can be used due to their highly concentrated 2D-plane. This will help the cobot to determine the spot for the different activities inside the work-cell\cite{Lidar}.\\
+  Lidar sensors can be used to determine the object postion spot inside the work-cell, some lidars project a 3D point cloud and others work in a 2D-plane\cite{Lidar}.\\
 
-  \subsection{Pressure sensor} \label{pressure}
+  \subsection{Force sensor} \label{pressure}
   Pressure sensors which are included in the cobot, can be used as a weight distributor. Where the cobots payload of the rotor will be released when placed, and then the pressure sensor on the machines, could determine whether it was placed correctly.\\
  
   \subsection{Photocell sensors} 
