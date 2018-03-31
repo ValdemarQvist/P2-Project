@@ -6,13 +6,7 @@ The work cell regarding this project, consists of a number of machines and other
  \section{Work-cell}
  The rotor arrives in the work-cell on a conveyor see \ref{fig:Layoutworkcell}, the rotor always has the same orientation and stops in same position, the conveyor has a sensor that activates a hardware pin when a new rotor is in place.\\
  The manipulator's control box then receives a signal from the sensor, which tells the manipulator the rotor is at the given position, then the can process begin.\\
- 
- \begin{figure}[h!]
-    \centering
-    \includegraphics[scale=.5]{TechnicalAnlysis/layout.PNG}
-    \caption{Layout of work-cell\cite{Case}}
-    \label{fig:Layoutworkcell}
-\end{figure}
+
 
 %\subsection{The ideal work-cell}
 %The ideal work-cell would only require having a single robot manipulator to move the rotor between all the stations.\\
@@ -24,7 +18,7 @@ The work cell regarding this project, consists of a number of machines and other
  \subsection{Balancing machine}
  The rotor has to be placed in the balancing machine see \ref{fig:balancing}, this is done via a drawer, see \ref{fig:Rotor} that opens and closes automatically, so a signal that tells if the drawer is opened or closed is needed to verify the status of the drawer. A signal from the manipulator to the balancing machine is needed so the manipulator can signal the machine to close its drawer and begin balancing.\\
  
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
     \begin{subfigure}{.49\textwidth}
         \centering
@@ -61,7 +55,7 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
  When the rotor passes a green light will indicate the pass and the hatches around the rotor will be released and the pressure will be stabilized to the current atmosphere  \cite{LEAK},\cite{LEAK2}.\\
 The UR5 needs to point the rotors in a 45 degree manner when inserting it into the cylinder, so that the rotor can be placed with a sliding trajectory.\\
  
- \begin{figure}[h]
+ \begin{figure}[h!]
     \centering
     \includegraphics[width=9cm]{InitialProblemstatement/Case/Leaktest.PNG}
     \caption{The leak testing machine\cite{Case}}
@@ -75,7 +69,7 @@ The UR5 needs to point the rotors in a 45 degree manner when inserting it into t
  It is used to engrave the part number ID of the rotor, there is space for one rotor per cycle.\\
  The engraver is made with a laser engraver from ROFIN, it uses a set of mirrors to control the laser beam\cite{laser}. The rotor is placed in a fixture inside the engraving machine, with a screen that protects people from the harmful laser beam, has to be closed, this can be done from a foot pedal. When the engraving is done the screen opens and the rotor can be stored at the pallet.\\   
   
-  \begin{figure}[h]
+  \begin{figure}[h!]
     \centering
     \includegraphics[width=9cm]{InitialProblemstatement/Case/engrave.PNG}
     \caption{Laser engraver machine\cite{Case}}
@@ -95,10 +89,10 @@ The UR5 needs to point the rotors in a 45 degree manner when inserting it into t
 
  
   \subsection{Lidar} 
-  Lidar sensors can be used to determine the object postion spot inside the work-cell, some lidars project a 3D point cloud and others work in a 2D-plane\cite{Lidar}.\\
+  Lidar sensors can be used to determine the object position spot inside the work-cell, some lidars project a 3D point cloud and others work in a 2D-plane\cite{Lidar}.The 3D lidar can be used to create a 3D representation of the work cell.A 2D lidar can be used as distances measurement device. It can measure the distance in the field of view depending on the product\cite{Lidar}.\\
 
-  \subsection{Force sensor} \label{pressure}
-  Pressure sensors which are included in the cobot, can be used as a weight distributor. Where the cobots payload of the rotor will be released when placed, and then the pressure sensor on the machines, could determine whether it was placed correctly.\\
+ % \subsection{Force sensor} \label{pressure}
+  %Pressure sensors which are included in the cobot, can be used as a weight distributor. Where the cobots payload of the rotor will be released when placed, and then the pressure sensor on the machines, could determine whether it was placed correctly.\\
  
   \subsection{Photocell sensors} 
   Photo-cell sensors can be used to signal that the rotor is in the right place on the conveyor. The photocell works by sending either infrared light or visible light, from a transmitter to a receiver, or some photocells work by setting up a mirror that reflects the light from the transmitter back to itself. If an object breaks the light beam, a hardware pin goes high or low depending on the type of sensor\cite{SICKfo}. \\

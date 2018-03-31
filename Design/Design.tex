@@ -1,85 +1,3 @@
-\chapter{Design}
-
-\section{Denavit-Hartenberg}
-
-In order to enable the UR5 on the flexible workstation to locate itself and its surroundings within a space, the DH (Denavit-Hartenberg) method is used.\\ 
-The DH method can be used to compute every frame into parameters.\\
-These descriptions of the system can be used to translate every point and every movement of the robotic manipulator, with the help of forward kinematic.\\
-Initially the start is to locate all of the coordinate systems, as seen in \ref{table:DH-table}.\\ 
-
-
-\begin{itemize}
-    \item ${a_{i-1}}$= The distance from ${Z_{i-1}}$ to ${Z_{i}}$ measured along ${X_{i-1}}$
-    \item ${\alpha_{i-1}}$ = The angel between ${Z_{i-1}}$ to ${Z_{i}}$ measured about ${X_{i-1}}$
-    \item ${d_{i}}$ = The distance from ${X_{i-1}}$ to ${X_{i}}$ measured along ${Z_{i}}$
-    \item ${\theta_{i-1}}$ = The angel between ${X_{i-1}}$ to ${X_{i}}$ measured about ${Z_{i}}$
-\end{itemize}
-
-
-\newpage
-
-Then the angles and the distance from each coordinate system is computed and set in to a table as seen in \ref{fig:DH-Table}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=1]{Design/DHmani.PNG}
-    \caption{Manipulator for describing DH-parameters \cite{DH}} 
-    \label{fig:DH-Table} 
-\end{figure}
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{||c c c c c||} 
- \hline
- i & \alpha_{i-1} & a_{i-1} & d_{i} & \theta_{i} \\ [0.5ex] 
- \hline\hline
- 1 & 0 & 0  & 0     & \theta_{1} \\ 
- 2 & 0 & l_{1} & 0 & \theta_{2} \\
- 3 & 0 & l_{2} & 0 & \theta_{3} \\[1ex]
- \hline
-\end{tabular}
-\caption{DH-Table}
-\label{table:DH-table}
-\end{table}
-
-As seen in \ref{fig:DH-Table},the coordinate systems is used to trace every step of each axis.\\
-Starting from left to right at the top of the table, the $\alpha-1$ is used to compute the differences of the angles between $Z_{i}$ and $Z_{i-1}$, which is 0, due to the fact that they keep the same angle from $Z_{i}$  to $Z_{i-1}$.\\
-It can also be seen from the table that the distance between $Z_{i}$ and $Z_{i-1}$ is Length2, since they are parallel to each other.\\ 
-The distance between $X_{i-1}$ and $X_i$ is 0 since they cross each other on the perpendicular line, which means that in that point the new coordinate system should be placed.\\
-\newpage
-\subsection{DH parameters for UR 5}
-
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{||c c c c c||} 
- \hline
- i & \alpha_{i-1} & a_{i-1} & d_{i} & \theta_{i} \\ [0.5ex] 
- \hline 
- \hline
- 1 & 0 & 0 & 89.2 & \theta_{1} \\ 
- 2 & 90 & 0 & 0 & \theta_{2} \\
- 3 & 0 & 425 & 0 & \theta_{3} \\
- 4 & 0 & 392 & 109.3 & \theta_{4} \\
- 5 & 90 & 0 & 94.75 & \theta_{5} \\ 
- 6 & -90 & 0 & 82.5 & \theta_{6} \\[1ex] 
- \hline
-\end{tabular}
-\caption{DH-parameters for the UR5, using \cite{DHPar} as measurement}
-\label{table:1}
-\end{table}
-
-\section{Forward Kinematics}
-
-\newpage
-\section{Inverse Kinematics}
-Inverse kinematics is used to compute the joint angles from a given position and orientation of an object\cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution where the inverse kinematics is set up in MATLAB, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
-\section{Conclusion}
-
-Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in 3D-space, so the robot can be manipulated and used for various tasks.\\
-Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems is located.\\
-Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{1-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and locate the robot so the tasks can be performed.\\
-
 \chapter{Ideal Work-cell}\label{IdealWorkCell}
 
 \begin{figure}[h]
@@ -96,7 +14,7 @@ Here is some sections about what is needed of the ideal work-cell.
 
 The workspace which a manipulator works within can be described as a radius which the point of the end-effector can reach.\\
 The Dexterous workspace is a more intelligent way of the robot to decide which points in arbitrary orientation, can be reached \cite{Dexterous}.\\
-The reason that the dexterous workspace is considered a solution to the work-cell, is that the kinematic restrains can be included, so that the trajectories of the manipulator wont freeze or go in lockdown.\\
+The reason that the dexterous workspace is considered a solution to the work-cell, is that the kinematic restrains can be included, so that the trajectories of the manipulator wont freeze or go in lock down.\\
 
 
 \section{Safety}
@@ -130,7 +48,7 @@ To ensure the work-flow some intelligent placement sensors must be implemented. 
     \item Depth sensing camera
 \end{itemize}
 
-The Lidar is a sensor that gives a concentrated 2D view, and can be used for the robot to tell the different object apart, and give an overview of the work-cell, see \ref{ref:PlacementS}.\\
+The Lidar is a sensor that gives a 3D view, and can be used for the robot to tell the different object apart, and give an overview of the work-cell, see \ref{ref:PlacementS}.\\
 These signals can be used for the cobot to get a better work-flow and also determine objects from each other.\\
 
 The photocell sensors can be used for a quicker work-flow, since it will detect the rotors when they are in the correct place to be picked up, see \ref{ref:PlacementS}.\\
@@ -139,22 +57,28 @@ Depth sensing cameras can determine the distance from end-effector to the desire
 
 \chapter{Ideal Robot}\label{IdealRobot}
 
-The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible. 
+The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible.\\
 
 \section{Optimal speed}
 
 The robot has 7 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 7, which will give the manipulator 3.7142 seconds to carry out the task.\\
-Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formular for the speed of the cobot can be found.
+Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formula for the speed of the cobot can be found.\\
 
-\begin{figure}
-    \centering
-    \includegraphics[width=8cm]{Design/idealrobotcalc.png}
-    \caption{Calculations of speed with 5 seconds delay on one station}
-    \label{fig:calculations}
-\end{figure}
+\begin{equation}
+    26 = 5 + 6 \times b \Rightarrow b = \frac{21}{6}\\
+\end{equation}
+
+\begin{equation}
+    b = \frac{21}{6} \Rightarrow b = \frac{7}{2}\\
+\end{equation}
+
+\begin{equation}
+    b = \frac{7}{2} \Leftrightarrow  b = 3.5 sec\\
+\end{equation}
+
 \newpage
 5 seconds in one station means that the other stations needs to be cut down with 0.2 seconds each.\\
-So the optimal speed for translations would be 3.5 seconds.
+So the optimal speed for translations would be 3.5 seconds.\\
 
 \section{optimal reach}
 
@@ -166,15 +90,23 @@ The manipulator must be able to reach all machines, without having to move its b
     \label{fig:workcell}
 \end{figure}
 
+This optimal reach could also be accomplished by changing the setup to use 2 manipulators, thereby halving the required reach. By doing it this way, the 2 robots would only need one place where their reach overlap, so they can both pick and place the rotors on a buffer table. This would also require additional safety, that should prevent the to robots from hitting each other.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=8cm]{}
+    \caption{Work-cell design with 2 robots}
+    \label{fig:workscell2arms}
+\end{figure}
+
 \section{optimal sensors}
 
 The robot should be able to identify humans, and collisions must be risk free, and not disrupt the work-flow. Optimally, the robot should also be able to identify what object it is holding, and if it is damaged or not. Additionally, the robot must be able to place the rotors correctly in the machines, using a depth sensing camera. \ref{depthcam}\\
-The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor\ref{pressure}. 
+The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor.\\ 
 
 \subsection{max payload}
 
-The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. 
-
+The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. The manipulator must also be able to support the[width=8cm] weight when the arm is fully stretcworkscell2arms
 
 
 
