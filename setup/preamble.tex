@@ -152,6 +152,7 @@
 % Add bibliography and index to the table of
 % contents
 \usepackage[nottoc,section]{tocbibind}
+%\usepackage{maplestd2e}
 %%her  her %%
 % Enable subappendices
 \usepackage{appendix}
@@ -183,6 +184,7 @@
 % last packages
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{float}
 \hypersetup{%
 	pdfpagelabels=true,%
 	plainpages=false,%
@@ -197,3 +199,19 @@
 	urlcolor=aaublue,%
 	pdfstartview=FitH%
 }
+%% 
+%% Maple definitions (c) 2008 Alexander Shapiro 
+%% 
+%\lst@definelanguage{Maple}% 
+%{morekeywords={and,assuming,break,by,catch,description,do,done,% 
+%elif,else,end,error,export,fi,finally,for,from,global,if,% 
+%implies,in,intersect,local,minus,mod,module,next,not,od,% 
+%option,options,or,proc,quit,read,return,save,stop,subset,then,% 
+%to,try,union,use,uses,while,xor},% 
+%sensitive=true,% 
+%morecomment=[l]\#,% 
+%morestring=[b]",% 
+%morestring=[d]"% 
+%}[keywords,comments,strings]% 
+
+%\usepackage{maplestd2e}

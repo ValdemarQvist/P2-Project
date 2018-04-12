@@ -1,14 +1,35 @@
 \chapter{Requirements specification} \label{ch:IdealReq}
 
-\begin{itemize}
-    \item A rotor cycle time may not exceed, 26 second within the work-cell.
-    \item The cycle within the work-cell must be ergonomic for the co-worker and reduce work-stress.
-    \item An emergency stop must always be in reach of an operator
-    \item The safety of the work-cell must comply with the ISO standards 10218-2:2011.
-    \item The manipulator must provide a better work-flow than a human alone.
-    \item Each machine must be within reach of at least one of the robotic manipulators.
-    \item The manipulator must be able to lift a payload of 645g at maximum reach.
-    \item The manipulator must be signaled by the sensors in the machines, to handle different tasks.
-    \item The setup must be flexible to accommodate for new machines within.
+%\begin{itemize}
+%    \item A rotor cycle time may not exceed, 26 second within the work-cell.
+%    \item The cycle within the work-cell must be ergonomic for the co-worker and reduce work-stress.
+%    \item An emergency stop must always be in reach of an operator
+%    \item The safety of the work-cell must comply with the ISO standards 10218-2:2011.
+%    \item The manipulator must provide a better work-flow than a human alone.
+%    \item Each machine must be within reach of at least one of the robotic manipulators.
+%    \item The manipulator must be able to lift a payload of 645g at maximum reach.
+%    \item The manipulator must be signaled by the sensors in the machines, to handle different tasks.
+%    \item The setup must be flexible to accommodate for new machines within.
+%\end{itemize}
+\section{Delimitations} \label{ch:Delimitations}
 
+The requirements for the ideal robot is not what is available for the project. 
+The work-cell that is given to the group by AAU, is not nearly big enough to cover the desired reach of the manipulator. As the case describes, see \ref{fig:workcellMR}, the reach of the manipulator has to be the same as 2 meters. The ideal work-cell can simply not be cut down to a shorter distance, without having to close the work-cell completely from entry.\\
+Delimiting the reach, a new solution had to be made, which is why the group decided to implement another manipulator on each side of the pallet-table. This has to be delimited as well since the group doesn't have permission or knowledge to implement 2 UR5's on the same table.
+For testing purposes, the work-cell can be simulated in a 2-1 scale, requiring half the space, and making the tests possible. \\
+The required speed for the manipulator can in theory be done since the manipulator assigned to the group has a speed of 1m/s. The only delimitation is that, if you want to get this speed, a default setting on the UR5 has to be overridden, so that it will move with maximum speed \cite{UserManual}.\\
+Also the machinery have some time-consuming processes, hereby the threshold of 26 seconds might be exceeded.\\
+Looking at the sensors, the only available sensor for the group is in the UR5, which is the pressure sensor. This is a delimitation for the safety process of this project. However the sensors can be simulated with another method, for example a command that can be implemented in the code of the UR5.\\
+
+\section{Delimited requirement specifications}
+
+\begin{itemize}
+    \item A rotor cycle may not exceed 26 seconds within the work-cell
+    \item The cycle of the rotor inside the work-cell must be ergonomic.
+    \item The emergency stop must always be in reach of an operator.
+    \item The UR5 must operate the rotor faster than a human.
+    \item At least 4 points (Machines) in the work-cell must be within reach of the UR5.
+    \item The UR5 must be able to lift a payload of 645g in 0 posistion.
+    \item The UR5's programming must be flexible, so it wont lower the production time when a new machine is presented.
+    \item The UR5 must react to the different tasks given to it by sensors.
 \end{itemize}
