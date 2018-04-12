@@ -112,7 +112,7 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
   Photo-cell sensors can be used to signal that the rotor is in the right place on the conveyor. The photocell works by sending either infrared light or visible light, from a transmitter to a receiver, or some photocells work by setting up a mirror that reflects the light from the transmitter back to itself. If an object breaks the light beam, a hardware pin goes high or low depending on the type of sensor\cite{SICKfo}. \\
 
  \subsection{Inductive sensor}
- Inductive sensors can only detect metal, but it has an advantage over the capacities sensors, since it has a further detection range. The project team found inductive sensors from SICK, which have a detection range from 20mm to 60mm \cite{SICKin} where a capacities sensor max range is from 16mm to 25mm \cite{SICKka} that could be found, so the range and distance of the inductive sensor can be better. Some inductive sensors can also give a analog signal so that these sensors can detect how far the metallic object is from the sensor\cite{SICKin}.\\ 
+ Inductive sensors can only detect metal, but it has an advantage over the capacities sensors, since it has a further detection range. The project team found inductive sensors from SICK, which have a detection range from 20mm to 60mm \cite{SICKin} where a capacities sensor max range is from 16mm to 25mm \cite{SICKka} that could be found, so the range and distance of the inductive sensor can be better. Some inductive sensors can also give an analog signal so that these sensors can detect how far the metallic object is from the sensor\cite{SICKin}.\\ 
 
  \subsection{Capacities senor} 
  Capacities sensors works much in the same ways as the inductive sensor, but they can detect metal and non metallic objects.\cite{SICKka}.\\
@@ -125,8 +125,8 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
  
  \section{Pick and Place}
 
-This method is what the manipulator of the project is using. To pick and place the rotors, a manipulator must have a certain number of DOF (degrees of freedom). The minimum required DOF is 2, since it only needs a gripper to pick and place. The manipulator could simply be attached to the ceiling with a crane moving it around.\\
-Our manipulator has 6 DOF which makes the calculations a bit more difficult when speaking of joint positions.\\
+This method is what the manipulator of the project is using. To pick and place the rotors, a manipulator must have a certain number of DOF (degrees of freedom). The minimum required DOF is 2, since the cartesian space of the x and y makes the movement of the object from point 1 to point 2 without changing the objeccts orientation. Take example a 1 DOF robot, this would only be able to lift the object up moving it in a straight line..\\
+Our manipulator has 6 DOF which makes the calculations a bit more difficult when speaking of joint positions \cite{DOF}.\\
  %3. All of the above could be managed with the interface of ROS, where a service program could be included to send messages through the topics of both cobot and machine. Hereby the two collaborating systems could interact between each other and send commands that could be interpreted by the cobot.\\ 
  
  %3.Industrial robots might use extra safety precautions, to decrease the probability of incidents happening. This could be extra sensors detecting when humans enter, or leave their designated workspace. For caged robots, the door to the cage must usually be closed in order for the robot to run, but you might also want other more reactive ways of ensuring the safety of the personal, particularly when using collaborative robots. One of the most used sensors on these kind of robots would be a collision detection sensor. This allows the robot to register when colliding with a soft surface, and the ability to then either stop, or reduce speed.\\ 
