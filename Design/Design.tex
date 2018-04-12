@@ -1,5 +1,127 @@
 \chapter{Design}\label{Design}
 
+\section{Desired Work-cell}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=9cm]{Design/Work_cell_3.png}
+    \caption{work-cell with measurements and reach}
+    \label{fig:workcellMR}
+\end{figure}
+
+When looking at \ref{fig:workcellMR}, a systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
+Here is some sections about what is needed of the ideal work-cell.
+
+\subsection{Dexterous work-space}
+
+The work-space which a manipulator works within can be described as a radius which the point of the end-effector can reach.\\
+The Dexterous work-space is a more intelligent way of the robot to decide which points in arbitrary orientation, can be reached \cite{Dexterous}.\\
+The reason that the dexterous work-space is considered a solution to the work-cell, is that the kinematic restrains can be included, so that the trajectories of the manipulator wont freeze or go in lock down.\\
+
+
+\subsection{Safety}
+
+To keep the production safe and manageable, some of the safety devices are chosen:
+
+\begin{itemize}
+    \item Light Curtain
+    \item LIDAR
+\end{itemize}
+
+The light curtain provides a signal when the curtain is broken, see \ref{SafetyDevices}.\\
+This will be used to send a signal to the UR5 to either stop or slow down the production, so a person safely can enter the cell, without getting serious damages.\\
+
+The LIDAR is commonly used in production, see \ref{SafetyDevices}.
+This threshold can be used to measure when a person enters the hazardous work area of the UR5.\\
+All of the above is a must since the UR5 is carrying a metal rotor with sharp edges, so the person wont be gauged.\\
+
+\subsection{Safety Requirements}
+
+The most important solution for the safety of the work-cell, is the ISO 10218-2:2011, see \ref{ISO2}.\\
+When installing a new robot for a production line, some standards is required. These standards of the ISO can present which of the areas needed to be acted upon.\\
+
+\subsection{Placement Sensors}
+
+To ensure the work-flow some intelligent placement sensors must be implemented. Some of the possible solutions are chosen:\\
+
+\begin{itemize}
+    \item LIDAR
+    \item Photocell sensors
+    \item Depth sensing camera
+\end{itemize}
+
+The LIDAR is a sensor that gives a 3D view, and can be used for the robot to tell the different object apart, and give an overview of the work-cell, see \ref{ref:PlacementS}.\\
+These signals can be used for the cobot to get a better work-flow and also determine objects from each other.\\
+
+The photocell sensors can be used for a quicker work-flow, since it will detect the rotors when they are in the correct place to be picked up, see \ref{ref:PlacementS}.\\
+
+Depth sensing cameras can determine the distance from end-effector to the desired object, see \ref{ref:PlacementS}. This can be used to derive the distance from the certain machine where the rotor has to be placed.\\
+
+\subsection{Conclusion}
+
+When having looked into what an optimal layout for the work-cell could be, with regards to the above sections, it was concluded that it was also necessary to consider the robot manipulators that has to function within this space. 
+
+\section{Desired Robot}\label{IdealRobot}
+
+The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible.\\
+
+\subsection{Desired speed}
+
+The robot has 7 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 7, which will give the manipulator 3.7142 seconds to carry out the task.\\
+Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formula for the speed of the cobot can be found.\\
+
+\begin{equation}
+    26 = 5 + 6 \times b \Rightarrow b = \frac{21}{6}\\
+\end{equation}
+
+\begin{equation}
+    b = \frac{21}{6} \Rightarrow b = \frac{7}{2}\\
+\end{equation}
+
+\begin{equation}
+    b = \frac{7}{2} \Leftrightarrow  b = 3.5 sec\\
+\end{equation}
+
+5 seconds in one station means that the other stations needs to be cut down with 0.2 seconds each.\\
+So the optimal speed for translations would be 3.5 seconds.\\
+
+\subsection{Desired reach}
+
+The manipulator must be able to reach all pick and place points, without having to move its base. Given the work-cell design, this means the robot will need a reach of 2 meters. \\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{Design/Work_cell_3.png}
+    \caption{Work-cell with measurements and reach}
+    \label{fig:workcell}
+\end{figure}
+
+This desired reach could also be accomplished by changing the setup to use 2 manipulators, see figure \ref{fig:workscell2arms}. By doing it this way, the 2 robots would only need one place where their reach overlap, so they can both pick and place the rotors on a buffer table. This would also require additional programming, which should prevent the two robots from hitting each other.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.5\textwidth]{Design/Work_cell_8.PNG}
+    \caption{Work-cell design with 2 robots}
+    \label{fig:workscell2arms}
+\end{figure}
+
+\input{Design/Workflow2rob.tex}
+
+\subsection{Desired sensors}
+
+The robot should be able to identify humans, and collisions must be risk free, and not disrupt the work-flow. Optimally, the robot should also be able to identify what object it is holding, and if it is damaged or not. Additionally, the robot must be able to place the rotors correctly in the machines, using a depth sensing camera. \ref{depthcam}\\
+The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor.\\ 
+
+\subsection{Max payload}
+The robot manipulator must be able to lift the combined weight of the L40 rotor, aswell as the end-effector tool meant to lift and move the rotor. For this reason, the combined weight of the end-effector tool and the L40 rotor can not exceed a total weight of 5 Kg.\\
+
+%\ref{workscell2arms}. this ref is not linking to anything??
+%The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. The manipulator must also be able to support the[width=8cm] weight when the arm is fully stretc\ref{workscell2arms}
+
+\subsection{Conclusion}
+
+From this chapter several specifications can be derived, which is required to setup a robot manipulator, these data and considerations will thus be used for the next section, which will describe these requirements.
+
+
 \section{Denavit-Hartenberg}
 
 In order to enable the UR5 on the flexible workstation to locate itself and its surroundings within a space, the DH (Denavit-Hartenberg) method is used.\\ 
@@ -66,7 +188,7 @@ The distance between $X_{i-1}$ and $X_i$ is 0 since they cross each other on the
 \end{table}
 \newpage
 \section{Forward Kinematics}
-Forward kinematics can be used for calculating the position and orientation of the end-effector of a robotic manipulator. This can be done by using the matrices describing the position and orientation of each of the joints of the specific robotic manipulator, and the following formula: \\
+Forward kinematics can be used for calculating the position and orientation of the end-effector of a robotic manipulator. This can be done by using the matrices describing the position and orientation of each of the joints for the specific robotic manipulator, and the following formula: \\
 
 \begin{equation}
     _N^0 T\; =\ _1^0T\  _2^1T\  _3^2T\  _4^3T\  .........\  _N^{N-1}T\\
@@ -81,9 +203,9 @@ Below are the general transformation matrices used in this method; from the base
 \input{Design/fknew.tex} \\\
 
 
-So the main idea is, given the joint angles as input, you would be able to get the coordinates for the end-effector as output. So the position can be calculated from specific set values, and used for simulations.  \\
+The main idea is, given the joint angles as input, you would be able to get the coordinates for the end-effector as output. So the position can be calculated from specific set values, and used for simulations.\\
 
-Kinematics can be used to form an internal picture of the robot movements, and help understanding and explaining it. 
+Kinematics can be used to form an internal picture in a cartesian space  of the robot movements, and help understanding and explaining it. 
 
 This is useful when working with not only manipulators, but also animations in movies and video games, or any other movement where multiple joints are used. 
 
@@ -100,128 +222,6 @@ Inverse kinematics is used to compute the joint angles from a given position and
 Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in 3D-space, so the robot can be manipulated and used for various tasks.\\
 Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems is located.\\
 Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{1-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and locate the robot so the tasks can be performed.\\
-
-\section{Desired Work-cell}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=9cm]{Design/Work_cell_3.png}
-    \caption{work-cell with measurements and reach}
-    \label{fig:workcellMR}
-\end{figure}
-
-When looking at \ref{fig:workcellMR}, a systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
-Here is some sections about what is needed of the ideal work-cell.
-
-\subsection{Dexterous work-space}
-
-The work-space which a manipulator works within can be described as a radius which the point of the end-effector can reach.\\
-The Dexterous work-space is a more intelligent way of the robot to decide which points in arbitrary orientation, can be reached \cite{Dexterous}.\\
-The reason that the dexterous work-space is considered a solution to the work-cell, is that the kinematic restrains can be included, so that the trajectories of the manipulator wont freeze or go in lock down.\\
-
-
-\subsection{Safety}
-
-To keep the production safe and manageable, some of the safety devices are chosen:
-
-\begin{itemize}
-    \item Light Curtain
-    \item Lidar
-\end{itemize}
-
-The light curtain provides a signal when the curtain is broken, see \ref{SafetyDevices}.\\
-This will be used to send a signal to the UR5 to either stop or slow down the production, so a person safely can enter the cell, without getting serious damages.\\
-
-The Lidar is commonly used in production, see \ref{SafetyDevices}.
-This threshold can be used to measure when a person enters the hazardous work area of the UR5.\\
-All of the above is a must since the UR5 is carrying a metal rotor with sharp edges, so the person wont be gauged.\\
-
-\subsection{Safety Requirements}
-
-The most important solution for the safety of the work-cell, is the ISO 10218-2:2011, see \ref{ISO2}.\\
-When installing a new robot for a production line, some standards is required. These standards of the ISO can present which of the areas needed to be acted upon.\\
-
-\subsection{Placement Sensors}
-
-To ensure the work-flow some intelligent placement sensors must be implemented. Some of the possible solutions are chosen:\\
-
-\begin{itemize}
-    \item Lidar
-    \item Photocell sensors
-    \item Depth sensing camera
-\end{itemize}
-
-The Lidar is a sensor that gives a 3D view, and can be used for the robot to tell the different object apart, and give an overview of the work-cell, see \ref{ref:PlacementS}.\\
-These signals can be used for the cobot to get a better work-flow and also determine objects from each other.\\
-
-The photocell sensors can be used for a quicker work-flow, since it will detect the rotors when they are in the correct place to be picked up, see \ref{ref:PlacementS}.\\
-
-Depth sensing cameras can determine the distance from end-effector to the desired object, see \ref{ref:PlacementS}. This can be used to derive the distance from the certain machine where the rotor has to be placed.\\
-
-\subsection{Conclusion}
-
-When having looked into what an optimal layout for the work-cell could be, with regards to the above sections, it was concluded that it was also necessary to consider the robot manipulators that has to function within this space. 
-
-\section{Desired Robot}\label{IdealRobot}
-
-The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible.\\
-
-\subsection{Desired speed}
-
-The robot has 7 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 7, which will give the manipulator 3.7142 seconds to carry out the task.\\
-Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formula for the speed of the cobot can be found.\\
-
-\begin{equation}
-    26 = 5 + 6 \times b \Rightarrow b = \frac{21}{6}\\
-\end{equation}
-
-\begin{equation}
-    b = \frac{21}{6} \Rightarrow b = \frac{7}{2}\\
-\end{equation}
-
-\begin{equation}
-    b = \frac{7}{2} \Leftrightarrow  b = 3.5 sec\\
-\end{equation}
-
-5 seconds in one station means that the other stations needs to be cut down with 0.2 seconds each.\\
-So the optimal speed for translations would be 3.5 seconds.\\
-
-\subsection{Desired reach}
-
-The manipulator must be able to reach all machines, without having to move its base. Given the work-cell design, this means the robot will need a reach of 2 meters. \\
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Design/Work_cell_3.png}
-    \caption{Work-cell with measurements and reach}
-    \label{fig:workcell}
-\end{figure}
-
-This optimal reach could also be accomplished by changing the setup to use 2 manipulators, thereby halving the required reach. By doing it this way, the 2 robots would only need one place where their reach overlap, so they can both pick and place the rotors on a buffer table. This would also require additional safety, that should prevent the two robots from hitting each other.\\
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8cm]{Design/Work_cell_8.PNG}
-    \caption{Work-cell design with 2 robots}
-    \label{fig:workscell2arms}
-\end{figure}
-
-\input{Design/Workflow2rob.tex}
-
-\subsection{Optimal sensors}
-
-The robot should be able to identify humans, and collisions must be risk free, and not disrupt the work-flow. Optimally, the robot should also be able to identify what object it is holding, and if it is damaged or not. Additionally, the robot must be able to place the rotors correctly in the machines, using a depth sensing camera. \ref{depthcam}\\
-The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor.\\ 
-
-\subsection{Max payload}
-The robot manipulator must be able to lift the combined weight of the L40 rotor, aswell as the end-effector tool meant to lift and move the rotor. The L40 rotor has a weight of 645 grams, which means the end-effector tool can not exceed a total weight of more than the specified payload on the model minus 645 grams.
-%\ref{workscell2arms}. this ref is not linking to anything??
-%The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. The manipulator must also be able to support the[width=8cm] weight when the arm is fully stretc\ref{workscell2arms}
-
-\subsection{Conclusion}
-
-From this chapter several specifications can be derived, which is required to setup a robot manipulator, these data and considerations will thus be used for the next section, which will describe these requirements.
-
-
 
 
 
