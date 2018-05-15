@@ -8,7 +8,7 @@
     \caption{work-cell with measurements and reach}
     \label{fig:workcellMR}
 \end{figure}
-
+\\
 When looking at \ref{fig:workcellMR}, a systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
 Here is some sections about what is needed of the ideal work-cell.
 
@@ -21,19 +21,14 @@ The reason that the dexterous work-space is considered a solution to the work-ce
 
 \subsection{Safety}
 
-To keep the production safe and manageable, some of the safety devices are chosen:
-
-\begin{itemize}
-    \item Light Curtain
-    \item LIDAR
-\end{itemize}
-
-The light curtain provides a signal when the curtain is broken, see \ref{SafetyDevices}.\\
-This will be used to send a signal to the UR5 to either stop or slow down the production, so a person safely can enter the cell, without getting serious damages.\\
-
-The LIDAR is commonly used in production, see \ref{SafetyDevices}.
-This threshold can be used to measure when a person enters the hazardous work area of the UR5.\\
-All of the above is a must since the UR5 is carrying a metal rotor with sharp edges, so the person wont be gauged.\\
+The safety in the work-cell is important, since it helps prevent eventual accidents that might be avoidable with some safety measures. The work-cell also has to comply to the required legal safety regulations.\\
+One safety measure that could be beneficial in the work-cell is a "light curtain" sensor, see\ref{SafetyDevices}.
+When a light beam from the light curtain is broken, it can signal the UR5 inside the work-cell to slow down.\\
+The light curtain can be placed around the work-cell, so it is triggered whenever someone enters the work-cell. This allows the production to continue, while making the work-cell more safe for anyone entering the work-cell \ref{SafetyDevices}.\\
+To further improve the safety, a LIDAR sensor could be used.
+LIDAR is a common sensor that can scan an environment at a variety of ranges,see \ref{SafetyDevices}.
+The LIDAR sensor can be used to detect, when a person enters the proximity of the UR5 within the work-cell. When the LIDAR detects something, it can signal the UR5 to stop completely. This can reduce the risk of injury further, since it could be dangerous for people to be struck with a rotor, even at low speeds.\\
+The above safety precautions would increase the work-cell safety, while still allowing some progress to be made, when there are people in the work-cell.\\
 
 \subsection{Safety Requirements}
 
@@ -49,21 +44,18 @@ To ensure the work-flow some intelligent placement sensors must be implemented. 
     \item Photocell sensors
     \item Depth sensing camera
 \end{itemize}
-
+\\
 The LIDAR is a sensor that gives a 3D view, and can be used for the robot to tell the different object apart, and give an overview of the work-cell, see \ref{ref:PlacementS}.\\
 These signals can be used for the cobot to get a better work-flow and also determine objects from each other.\\
-
+\\
 The photocell sensors can be used for a quicker work-flow, since it will detect the rotors when they are in the correct place to be picked up, see \ref{ref:PlacementS}.\\
-
+\\
 Depth sensing cameras can determine the distance from end-effector to the desired object, see \ref{ref:PlacementS}. This can be used to derive the distance from the certain machine where the rotor has to be placed.\\
 
-\subsection{Conclusion}
-
-When having looked into what an optimal layout for the work-cell could be, with regards to the above sections, it was concluded that it was also necessary to consider the robot manipulators that has to function within this space. 
 
 \section{Desired Robot}\label{IdealRobot}
 
-The ideal robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible.\\
+The desired robot to have inside the work-cell, is intelligent, fast and can decide the next trajectory without any hesitation. Its size is optimized to fit the given case, to work at the most effective speed possible.\\
 
 \subsection{Desired speed}
 
@@ -81,7 +73,7 @@ Taking the visual inspection in consideration, the number has to be lower when t
 \begin{equation}
     b = \frac{7}{2} \Leftrightarrow  b = 3.5 sec\\
 \end{equation}
-
+\\
 5 seconds in one station means that the other stations needs to be cut down with 0.2 seconds each.\\
 So the optimal speed for translations would be 3.5 seconds.\\
 
@@ -94,7 +86,7 @@ The manipulator must be able to reach all pick and place points, without having 
     \caption{Work-cell with measurements and reach}
     \label{fig:workcell}
 \end{figure}
-
+\\
 This desired reach could also be accomplished by changing the setup to use 2 manipulators, see figure \ref{fig:workscell2arms}. By doing it this way, the 2 robots would only need one place where their reach overlap, so they can both pick and place the rotors on a buffer table. This would also require additional programming, which should prevent the two robots from hitting each other.\\
 
 \begin{figure}[H]
@@ -112,15 +104,27 @@ The robot should be able to identify humans, and collisions must be risk free, a
 The robot should be able to register whether or not it has picked up a rotor. This can be done by using a pressure sensor.\\ 
 
 \subsection{Max payload}
-The robot manipulator must be able to lift the combined weight of the L40 rotor, aswell as the end-effector tool meant to lift and move the rotor. For this reason, the combined weight of the end-effector tool and the L40 rotor can not exceed a total weight of 5 Kg.\\
+The robot manipulator must be able to lift more then  the combined weight of the L40 rotor, aswell as the end-effector tool to move the rotor.\\
+
 
 %\ref{workscell2arms}. this ref is not linking to anything??
 %The robot must be able to lift the L40 rotor given in the case, which weighs 645 grams. The end-effector must also be able to grab it, without the risk of dropping it. The rotor is 190mm long, and 90mm wide at its widest point. The manipulator must also be able to support the[width=8cm] weight when the arm is fully stretc\ref{workscell2arms}
 
-\subsection{Conclusion}
+\section{Conclusion} 
 
-From this chapter several specifications can be derived, which is required to setup a robot manipulator, these data and considerations will thus be used for the next section, which will describe these requirements.
+looking into what an optimal layout for the work-cell could be, with respect to the above problem-analysis, it is considered that these items are desirable for the work-cell.\\
+A desired robot has been specified using the different requirements from the previous chapters. In terms of the desired speed, it was concluded that the robot should be able to complete each task in 3,5 seconds or less.\\
+It was also concluded that one of the following solutions would be required for the robot to reach everything in the work-cell: 
+\begin{itemize}
+    \item The chosen robot would have a reach of at least 2 meters.
+    \item 2 robots would be in the work-cell at the same time. 
+    \item The robot would have a movable base. 
+\end{itemize} 
+Additionally, the desired sensors in the work-cell should be able to identify humans, detect the rotor which the robot is holding, detect the orientation of this rotor, and whether it is damaged. The sensors should also allow the robot in the work-cell to place the rotors correctly into each machine. It is also concluded that the robot should lift a payload greater than the end-effector and the L40 rotor combined.\\
 
+\chapter{Manipulators and Math}\label{ch:kinematics}
+
+In this chapter there will be described some mathematical expression of manipulators in general and for the UR5, and the trajectory planning of the UR5.
 
 \section{Denavit-Hartenberg}
 
@@ -137,8 +141,7 @@ Initially the start is to locate all of the coordinate systems, as seen in \ref{
     \item ${\theta_{i-1}}$ = The angel between ${X_{i-1}}$ to ${X_{i}}$ measured about ${Z_{i}}$
 \end{itemize}
 
-
-
+\\
 Then the angles and the distance from each coordinate system is computed and set in to a table as seen in \ref{fig:DH-Table}.
 
 \begin{figure}[h!]
@@ -162,7 +165,7 @@ Then the angles and the distance from each coordinate system is computed and set
 %\caption{DH-Table}
 %\label{table:DH-table}
 %\end{table}
-
+\\
 As seen in \ref{fig:DH-Table},the coordinate systems is used to trace every step of each axis.\\
 Starting from left to right at the top of the table, the $\alpha-1$ is used to compute the differences of the angles between $Z_{i}$ and $Z_{i-1}$, which is 0, due to the fact that they keep the same angle from $Z_{i}$  to $Z_{i-1}$.\\
 It can also be seen from the table that the distance between $Z_{i}$ and $Z_{i-1}$ is Length2, since they are parallel to each other.\\ 
@@ -175,58 +178,201 @@ The distance between $X_{i-1}$ and $X_i$ is 0 since they cross each other on the
  i & $\alpha_{i-1}$ & $a_{i-1}$ & $d_{i}$ & $\theta_{i}$ \\ [0.5ex] 
  \hline 
  \hline
- 1 & 0 & 0 & 89.2 & $\theta_{1}$ \\ 
- 2 & 90 & 0 & 0 & $\theta_{2}$ \\
- 3 & 0 & 425 & 0 & $\theta_{3}$ \\
- 4 & 0 & 392 & 109.3 & $\theta_{4}$ \\
- 5 & -90 & 0 & 94.75 & $\theta_{5}$ \\ 
- 6 & 90 & 0 & 82.5 & $\theta_{6}$ \\[1ex] 
+ 1 & 0 & 0 & 500 & $\theta_{1}$ \\ 
+ 2 & -90 & 150 & 0 & $\theta_{2}$-90 \\
+ 3 & 0 & 700 & 0 & $\theta_{3}$ \\
+ 4 & -90 & 50 & 600 & $\theta_{4}$ \\
+ 5 & 90 & 0 & 0 & $\theta_{5}$ \\ 
+ 6 & -90 & 0 & 75 & $\theta_{6}$+180\\[1ex] 
  \hline
 \end{tabular}
 \caption{DH-parameters for the UR5, using \cite{DHPar} as measurement.}
 \label{table:1}
 \end{table}
 
-\section{Forward Kinematics}
-Forward kinematics can be used for calculating the position and orientation of the end-effector of a robotic manipulator. This can be done by using the matrices describing the position and orientation of each of the joints for the specific robotic manipulator, and the following formula: \\
+\section{Angle axis representation}
 
+There are different ways to represent rotation, there is the roll, pitch and yaw. The best way to understand this is by showing a visual representation \ref{fig:rpy-rep}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Design/UR5RPY.JPG}
+    \caption{a representation of roll,pitch and yaw\cite{CHRobotics}}
+    \label{fig:rpy-rep}
+\end{figure}
+
+where roll is a rotation around the X axis, pitch is a rotation around the Y axis and yaw is a rotation around the Z axis\cite{JohnC}.\\
+The way that rotations are represented for the UR 5 is called angle axis, the way to understand this is by having specific vectors for a certain rotation see figure \ref{fig:rpy-rep}. The vector is used as an axis that rotation is going about\cite{JohnC}.
+
+\subsection{Robot singularities}
+The American National Standard for Industrial Robots and Robot systems, define singularities as "a condition caused by the collinear alignment of two or more robot axes resulting in unpredictable robot motion and velocities".\\
+3 types of singularities can happen \cite{3Sing}.
+
+\paragraph{Wrist:} When 2 of the axis of the robots wrist joints, are parallel with each other, it can cause them to unintendedly spin 180 degrees.
+\paragraph{Shoulder:} When the wrist aligns with the joint 1 axis, it will cause the shoulder part of the robot to spin 180 degrees in an instant, to try and follow the motion, same will happen if joint 1 and 6 line up with each other.
+\paragraph{Elbow:} Unlike the other 2, this singularity instead locks the elbow in a stretched position, and happens when the center of the robot's wrist ends up on the same plane as joints 2 and 3, and will look like the arm is fully stretched, and tried to reach too far.
+
+\section{Forward Kinematics}
+The general idea behind forward kinematics, is that when given the joint angles from a manipulator as input, it is possible to compute the position and orientation for the end-effector as an output. This can then be used in a simulation of any manipulator.\\
+Below are the general transformation matrices derived in Introduction to Robotics \cite{JohnC},this can be used to derive each joint transformation. In this matrix, the DH-parameters is used so the mechanical design of the manipulator is a fixed value and the angle values is a variable.\\
+\input{Design/fknew.tex}\\
+Inserting arbitrary angels in each joint transformation matrices the position and orientation can be computed.
+This can be done by using the following formula \ref{fig:tdot}, and using the dot-product on each transformation matrix, up to the desired point.\\
 \begin{equation}
     _N^0 T\; =\ _1^0T\  _2^1T\  _3^2T\  _4^3T\  .........\  _N^{N-1}T\\
-\end{equation} \\
-
-This is the formula used for calculating the end-effector of a robotic manipulator. \\
-
-Now, the required transformation matrices can simply be inserted into the formula, and the matrix describing the position of the end-effector can be calculated. \\
-
-Below are the general transformation matrices used in this method; from the base of the robotic manipulator to the sixth joint. These can be multiplied together to find \(_6^BT\) for the UR5: 
-
-\input{Design/fknew.tex} \\\
-
-
-The main idea is, given the joint angles as input, you would be able to get the coordinates for the end-effector as output. So the position can be calculated from specific set values, and used for simulations.\\
-
-Kinematics can be used to form an internal picture in a cartesian space  of the robot movements, and help understanding and explaining it. 
-
-This is useful when working with not only manipulators, but also animations in movies and video games, or any other movement where multiple joints are used. 
-
-
-
+\caption{Caption}
+    \label{fig:tdot}
+    \end{equation}\\
+Kinematics can be used to form an internal picture in a cartesian space  of the robot movements, and help understanding and explaining it.\\
+This is useful when working with not only manipulators, but also animations in movies and video games, or any other movement where multiple joints are used.\\
 \section{Inverse Kinematics}
-Inverse kinematics is used to compute the joint angles from a given position and orientation of an object\cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution where the inverse kinematics is set up in MATLAB, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
+Inverse kinematics is used to compute the joint angles from a given position and orientation of an object \cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution, where the inverse kinematics is set up in Maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
+
+\subsection{Finding the theta's}
+These steps are inspired by Rasmus Skovgaard Andersem \cite{Rasmus}.
+Further calculations can be seen in a "maple" document attached with the document.\\
+\paragraph{Step 1:} Use the rotation matrix\\
+\begin{equation}
+\centering
+_6^0 T = \begin{bmatrix} -0.786357421476564 & -0.607604499854991 & 0.111618896951653 & -521.411309306909\\-0.527586986670956 & 0.566511110959708 & -0.633022221383129 & -256.142081438594\\
+0.321393804908450 & -0.556670399249454 & -0.766044443341916 & -419.593026103387 \\
+0 & 0 & 0 & 1\\ \end{bmatrix}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{equation}\\
+
+\paragraph{Step 2:} find the matrice from 0 to 5.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.79]{Design/05.png}
+    \caption{Angles and lengths of P50 \cite{Rasmus}} 
+    \label{fig:rasmus1} 
+\end{figure}
+
+The group found the matrice by dotting T06 with the minus translation of the tool.\\
+\begin{equation}
+\centering
+^5P_0 = _6^0 T.\begin{bmatrix} 0 \\ 0 \\ -d_6 \\ 1 \\ \end{bmatrix}=\begin{bmatrix}-530.564058856945\\ -204.234259285177\\ -356.777361749350\\ 1\end{bmatrix}
+    \caption{Caption}
+    \label{fig:rotmat}
+\end{equation}\\
 
 
+\paragraph{Step 3:} Find theta 1.\\
+The group found theta 1 by calculating two different angles. The first angle was computed by taking x and y's tangent from point 0 to 5.\\
+Then the law of cosines was then used to get the last angle needed to compute theta 1.
+The outcome was expected to be 10 degrees.\\
+
+\begin{equation}
+\centering
+\theta_1 = \frac{(\phi_1+\phi_2)\cdot180}{\pi} = 9.99999
+\end{equation}\\
 
 
-\section{Conclusion} 
+knowing that the output that was given to the group was in radians, the result would be multiplied with 180 and divided by pi, to get the correct degrees.
 
-Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in 3D-space, so the robot can be manipulated and used for various tasks.\\
-Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems is located.\\
-Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{1-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and locate the robot so the tasks can be performed.\\
+\paragraph{Step 4:} Find theta 5.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Design/06.png}
+    \caption{Angles and lengths of P61 \cite{Rasmus}} 
+    \label{fig:rasmus2} 
+\end{figure}
+
+The group found theta 5 by examining T16, the x and y from this matrice was then used in the equation of theta5.\\
+The result was expected to be 50 degrees.
+\begin{equation}
+\centering
+\large\theta_1 =\frac{arccos\cdot\frac{(-521.411\cdot Sin(\theta_1)-(-256.142)\cdot Cos(\theta_1)-d_4}{d_6}\cdot 180}{\pi}=49.99995
+\end{equation}\\
 
 
+\paragraph{Step 5:} Find theta 6.\\
+
+The group found theta 6 by combining the different parameters from the rotation matrix, see \ref{fig:rotmat}.\\
+The x and y parameters was used and then the tangent of the two parameters was found and inserted in the equation of theta 6.
+The result was expected to be 60 degrees.\\
+
+\begin{equation}
+\centering
+\theta_6 = \frac{^1_2 P}{\pi} \cdot 180 = 59.999999999
+\label{}
+\end{equation}\\
+
+Knowing that the x and y parameters is considered a rotation by sine to theta 1, the sine and cosines were placed behind the parameters, respectively sin after x and cos after y, and lastly divided with the sine to theta 5.
+
+\paragraph{Step 6:} Find theta 2,3 and 4.\\
+
+The following thetas are parallel and can be reviewed in the attached maple document.\\
 
 
+\section{Trajectories}
+When the angle degrees is known from inverse kinematics to two given positions, it is possible to calculate the trajectories. The purpose of planning the trajectories of the robot manipulator, is to control the trajectory. This makes the acceleration of the manipulators joints more smooth.\\
+Doing so will make the movements predictable and accurate, and should help avoiding the singularity problem \cite{Trajectory}. 
 
+
+\subsection{Joint trajectories}
+
+Using joint trajectories, 3 categories have to be determined:\\
+Position, Velocity and Acceleration.
+These three polynomials can be described as the trajectory.\\
+In this section we denote the following:
+\begin{equation}
+    a_0 = Starting position \theta
+\end{equation}
+\begin{equation}
+    a_1 = Starting velocity
+\end{equation}
+\begin{equation}
+    a_2 = \frac{3}{finish time} \cdot (\theta_{end} - \theta_start)
+\end{equation}
+\begin{equation}
+    a_3 = \frac{-2}{finish time} \cdot (\theta_end - \theta_start)
+\end{equation}
+The position a is computed by \(\theta(t)\), which is described as: \[\theta(t)=a_0+a_1t+a_2t^2+a_3t^3\]
+This function can be used to describe the velocity and acceleration by using its derivatives\cite{JointTrajectories}:\[\Dot{\theta}(t)\] and \[\Ddot{\theta}(t)\]
+
+\subsection{Joint position}
+In figure \ref{fig:position} we are showing the rotational movements of the 6 joints on the UR5, when it is performing the task of moving the rotor from the conveyor belt, to the balancing machine.\\
+For each joint it is calculated using the formula: \[\theta(t)=a_0+a_1t+a_2t^2+a_3t^3\]
+
+\subsection{Joint velocity}
+In figure \ref{fig:velocity} we calculate the movement speed of the 6 joints, we do this by using the derivative of the position formula, which then becomes \[\Dot{\theta}(t)=a_1+2a_2t+3a_3t^2\]
+
+\subsection{Joint Acceleration}
+In figure \ref{fig:acceleration} the acceleration and deceleration of the 6 joints are calculated based on the joint position change, this is done by taking the double derivative of the position change formula, which then becomes: \[\Ddot{\theta}(t)=2a_2t+6a_3t\]
+
+
+\subsubsection{From point 1: "Conveyor" to point 2: "Balancing", where t is from 0 to 2.6}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{Design/poscb.png}
+    \caption{Position for point 1 to 2}
+    \label{fig:position}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{Design/velcb.png}
+    \caption{Velocity for point 1 to 2}
+    \label{fig:velocity}
+  \end{minipage}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{Design/acccb.png}
+    \caption{Acceleration for point 1 to 2}
+    \label{fig:acceleration}
+   \end{minipage}
+\end{figure}
+ 
+\section{Conclusion}
+Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in a 3D-space, so the robot can be manipulated and used for various tasks.\\
+Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems are located.\\
+Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{i-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and to locate the end-effector so the tasks can be performed.\\
 
 
 

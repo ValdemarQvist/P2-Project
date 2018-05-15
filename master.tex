@@ -18,19 +18,45 @@
 \input{setup/hyphenations.tex}% 
 \input{setup/macros.tex}% my new macros
 
+
+
+%Tikz til flowcharts:
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+%Start/stop rectangle:
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, text width=3cm, draw=black, fill=red!30] 
+
+%Out trapezium:
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=1cm, text centered, text width=2.2cm, draw=black, fill=blue!30]
+
+%Process rectangle: 
+\tikzstyle{process} = [rectangle, minimum width=3.2cm, minimum height=1cm, text centered, text width=2.2cm, draw=black, fill=orange!30]
+
+%Decision diamond:
+\tikzstyle{decision} = [diamond, minimum width=2cm, minimum height=1cm, text centered, text width=2.5cm, draw=black, fill=green!30]
+
+%Arrows:
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+%Guidebox rectangle:
+\tikzstyle{Guidebox} = [rectangle, minimum width=0cm, minimum height=0cm]
+
+
+
 \begin{document}
 %frontmatter
 \frontmatter
 \pagestyle{empty} %disable headers and footers
-\pagenumbering{roman} %use roman page numbering in the frontmatter
+\pagenumbering{arabic} %use roman page numbering in the frontmatter
 \input{frontmatter/frontpage}
-\input{frontmatter/abstract}
-
+\input{frontmatter/titlepage.tex}
+\input{frontmatter/preface}
 \pdfbookmark[0]{Contents}{label:contents}
 \pagestyle{fancy} %enable headers and footers again
 \tableofcontents
 
-\input{frontmatter/preface}
+
 \cleardoublepage
 
 %mainmatter
@@ -45,13 +71,13 @@
 \input{Regulations/regulationer.tex}
 \input{Regulations/ergonomcy.tex}
 \input{SafetyAtGrundfos/SafetyMeasuresAndPrecautions.tex}
+\input{Design/Finalproblem.tex}
 \input{Design/IdealRequirement.tex}
 %\input{Design/Delimitation.tex}
-\input{Design/delimitatedRobot.tex}
-\input{Design/Finalproblem.tex}
-
+%\input{Design/delimitatedRobot.tex}
 \input{Design/Design.tex}
 \input{Design/Test.tex}
+\input{Appendix/AppendixA.tex}
 %%begin novalidate
 %backmatter
 \appendix

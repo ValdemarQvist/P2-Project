@@ -1,13 +1,14 @@
 \section{Safety at Grundfos}\label{ch:Safety at Grundfos}
 In order to make sure that the risk of an accident is at a minimum at all times in the production line at Grundfos, a number of safety measures are installed, and certain precautions must be taken.\\
-
+\\
 Every robot at Grundfos has an emergency stop button, which immediately shuts down the corresponding machine. The placement of these buttons have to be located so they are within reach, if an accident should happen, or preferably to avoid an accident before it happens. \\
 It is required of such an emergency stop to immediately put to halt any ongoing motion, as well as if there are more than one robot in the same working space, then it has to be able to stop them all.\\
 The UR5 robot has its emergency stop located on its control pad.\\
-
+\\
 Additionally, most of the Robots at Grundfos must be inside a cage while running, and workers are in most cases prohibited from entering while the robots are running. The cages can be opened, for example to perform maintenance, while the robots are turned off.\\
-
+\\
 However, some of the new additions to Grundfos are the UR5, which can be used without a cage. For this to be safe, the robots have a low maximum payload, and therefore are not as powerful as many of the other robots. But this also makes them much safer for workers to be around, since they are designed to be able to hit workers without injuring them. This is in addition to strict rules and training for the workers who operate, and work in collaboration with the robots \cite{SafetyatGrundfos}. \\
+
 
 \section{Safety devices}\label{SafetyDevices}
 There are many different safety devices  on the market, here are some that can be used to keep the employee safe while working along side a robot.\\
@@ -16,18 +17,48 @@ There are many different safety devices  on the market, here are some that can b
 A light curtain works as an invisible barrier, that is made up of two poles where a beam of non-visual light, is sent between the poles, so if a person brakes the light beam at any point it will transmit a signal to the manipulator control box\cite{ligthcurtian}.\\
 
 \subsection{LIDAR}
-A LIDAR can also be used as a safety device\cite{Lidar}, some can be programmed to a certain threshold, if someone comes closer to the manipulator than the set threshold, a hardware pin in the Lidar trips high. These devices can be used to send signals to the control boxes of the manipulator, so if a person enters the work-cell while the manipulator is in operation it will stop or slow down. This can insure that if the employee is hit by the manipulator, the force is in a tolerable level.\\
+A LIDAR can also be used as a safety device\cite{LIDAR}, some can be programmed to a certain threshold, if someone comes closer to the manipulator than the set threshold, a hardware pin in the Lidar trips high. These devices can be used to send signals to the control boxes of the manipulator, so if a person enters the work-cell while the manipulator is in operation it will stop or slow down. This can insure that if the employee is hit by the manipulator, the force is in a tolerable level.\\
 
 
 
 \section{Conclusion}
 
-When operating a manipulator there are certain standards and regulations which are important.\\
-This project has delimited the regulations to something which covers the manipulators collaborating with humans.\\
 
-When focusing on the workplaces and collaboration with robots, a workplace risk assessment must be made. This is why the project has put focus on safety and ergonomics. \\
+To conclude, the process which the rotors have to go through has been explained. The different sensors in the workplace can be considered.\\
+While investigating the work-cell, the possible manipulators has also been taken in to consideration, and it can be concluded that they are all suitable for the task of optimizing grundfos' work-cell. There are 2 downsides to baxter: it cannot be sold in Denmark, and the repeatability is not as precise as desired.\\
+The sensors of both cobots and the work-cell has been looked in to, and possible solutions has been highlighted.\\
+The aim is to make a safe, controllable and flexible work-cell, hereby the different sensors can help with different tasks to secure that.\\
+When optimizing a work-cell, the velocity of the rotor cycle must be delimited. So the minimum requirements for the DOF has been included in the project, but the rotors orientation has to be handled with more than 3 DOF for the work-cell to run smoothly. In, see \ref{DOFSec}, the minimum DOF for our project has been described. Desirably the cobot will have 7 DOF.\\
+In order to comply with the legal standards, each of the requirements stated, see \ref{ch:regulation}, must be fulfilled. Additionally, improving the work space ergonomically improves the conditions for the workers, making the job more attractive, and may reduce the risk of work injuries.\\
+The aforementioned safety devices attempt to ensure the safety of the employees at Grundfos as much as possible. By slowing the robot down instead of completely halting it, the production can continue at a slower pace, so progress is still being made if the work-cell has to be entered for any reason. These reasons could include cleaning and maintenance of the work-cell.\\
 
-Taking the above into consideration, a workplace that is implemented with robots must have certain safety rules and have a safe work-environment.\\
 
-To overcome the problem with defining the ATEX zone, the team expects the work-cell area to get cleaned regularly, so dust does not accumulate, and potentially become a safety hazard.\\
+
+ %The process which the rotors have to go through, and each machine in this process, has now been explained. he different sensors to be used in the work-cell can now be considered.
+ 
+ % Now that each of the relevant items within the work-cell have been described, and their tasks have been clarified, the different possible robotic manipulators for the work-cell can be investigated and selected. The robotic manipulator must comply as closely as possible to the requirements set in the initial problem statement. \\
+ 
+ %The technical minimum requirement to solve the tasks for picking and placing are 4 DOF, which allows it to move in x, y and z axis, and rotate the end-effector around one axis. Having more DOF, will allow more flexibility in its motions, and adaptable for repurposing.\\
+ 
+ %Two robots are picked and looked into specification-wise. They are both cobots and suited to preform various tasks to relief work-stress. The only thing that delimits the cobot solution is that baxter is not avaivable in Denmark. The group have learned about which sensors various sensors could be desired for the possible solution of the work-cell implemented in grundfos, and also which specifications could be useful to look in to. 
+%The primary downside of the mobile platform would be speed. The time it takes for the platform to move around in the work-cell, is time where the robotic manipulator has to remain idle.  Additionally, this solution would likely require additional safety precautions, as well as the development of a system to control the mobile platform around the work-cell. For these reasons, the mobile platform is considered an undesirable solution. 
+ 
+ 
+ 
+% In order to comply to the legal standards, each of the above requirements must be fulfilled. Additionally, improving the work space ergonomically improves the conditions for the workers, making the job more attractive, and may reduce the risk of work injuries.   
+ 
+ %Since the work-cell in this project is supposed to be usable as a part of one of Grundfos' production lines, this work-cell must also comply to all the safety measures taken by Grundfos.
+
+%The aforementioned safety devices attempt to ensure the safety of the employees at Grundfos as much as possible. By slowing the robot down instead of completely halting it, the production can continue at a slower pace, so progress is still being made if the work-cell has to be entered for any reason. These reasons could include cleaning and maintenance of the work-cell. 
+
+
+%When operating a manipulator there are certain standards and regulations which are important.\\
+%This project has delimited the regulations to something which covers the manipulators collaborating with humans.\\
+
+%When focusing on the workplaces and collaboration with robots, a workplace risk assessment must be made. This is why the project has put focus on safety and ergonomics. \\
+
+%Taking the above into consideration, a workplace that is implemented with robots must have certain safety rules and have a safe work-environment.\\
+
+%To overcome the problem with defining the ATEX zone, the team expects the work-cell area to get cleaned regularly, so dust does not accumulate, and potentially become a safety hazard.\\
+
 

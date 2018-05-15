@@ -1,16 +1,21 @@
 \section{Case description} \label{ch:case description}
 
 In this project, we are going to focus on manipulators.
-The manipulator is going to assist in the balancing and leak test of an L40 rotor(\ref{fig:rotor}) that is being produced at Grundfos. The L40 rotor arrives at the work-cell via a conveyor belt. The rotor has to go through a balancing machine, where the rotor is placed in a drawer. It must then pass a visual inspection performed by an employee, before it is sent to the leak testing machine.\\
+The manipulator is going to assist in the balancing and leak testing of an L40 rotor(\ref{fig:rotor}) that is being produced at Grundfos. The L40 rotor arrives at the work-cell via a conveyor belt. The rotor has to go through a balancing machine, where the rotor is placed in a drawer. It must then pass a visual inspection performed by an employee, before it is sent to the leak testing machine.\\
 The leak testing machine can test two rotors per load, and when the leak test is complete, the machine will give a signal if the rotor has passed the test or not. The rotor will then be placed in an engraving machine which prints an ID onto the rotor. It will then be moved to the output pallet. When the pallet is full, it will be moved to a new location and replaced with a new pallet by an employee.\\ 
 After being processed in the leak testing machine, the rotors can be placed on a queue table, until the engraving machine is ready. Each rotor must undergo this entire process in 26 seconds or less. To get a visual of the work-cell, see \ref{fig:Layoutworkcell}.\\
+\\
+Besides the cycle process, there also has to be taken considerations for other parts of the design, like:
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.48\textwidth]{InitialProblemstatement/Case/rotorlille.PNG}
-    \caption{The L40 rotor}
-    \label{fig:rotor}
-\end{figure}
+\begin{enumerate} 
+    \item Establishing a layout for the work-cell.
+    \item Ergonomics and human interface with equipment.
+    \item Consideration towards safeguarding the work-cell.
+    \item Safety requirements for emergency stops, including where they should be located.
+    \item Cobot design solutions. 
+    \item Design of an end-effector for pick and place on the cobot.
+    \item Workflow of the manipulator, which includes trajectory and kinematics set-up. 
+\end{enumerate}
 
 \begin{figure}[H]
     \centering
@@ -19,6 +24,10 @@ After being processed in the leak testing machine, the rotors can be placed on a
     \label{fig:rotor_dims}
 \end{figure}
 
-
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.48\textwidth]{InitialProblemstatement/Case/rotorlille.PNG}
+    \caption{The L40 rotor}
+    \label{fig:rotor}
+\end{figure}
 

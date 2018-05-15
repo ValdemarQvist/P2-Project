@@ -1,18 +1,18 @@
 
 \section{Possible cobot Solutions} \label{ch:UR}
 
-This section is taking 2 different cobots in to consideration for a possible solution to the case description.
+This section is taking 3 different cobots into consideration for a possible solution to the case description.
 
 \subsection{KUKA}
 
 The KUKA company started more than a hundred years ago. They were the first to invent point welding gripper in Germany.\\
 As the years goes by the KUKA company writes history by inventing the world first industrial lightweight robot with sensors in every axis.\\
-
+\\
 KUKA and Rethink are competitors since they have the same market, hence is why this project will take both in to consideration of a possible optimization of the work-cell\cite{KukaHist}.\\
 
 
 \subsubsection{KUKA LBR IIWA 7 R800}
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{UR/1502895088_1.png}
     \caption{KUKA LBR IIWA 7 R800 \cite{KUKAbillede}}
@@ -39,10 +39,10 @@ Rethink robotics was founded in 2000, and are known for their invention the "Roo
 The first cobot they designed was in 2012, and was called "Baxter", see \ref{fig:Rethink},\cite{Rethink}.
 
 \subsubsection{Baxter}
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=9cm, height=9cm]{UR/baxter-robot-1.jpg}
-    \caption{Baxter cobot from "Rethink Robotics"\cite{Rethinkbillede}} 
+    \caption{Baxter cobot from "Rethink Robotics"\cite{Rethinkbillede}}
     \label{fig:Rethink}
 \end{figure}
 
@@ -58,18 +58,45 @@ The first cobot they designed was in 2012, and was called "Baxter", see \ref{fig
     \item Repeatability: +/- 5 mm.
 \end{itemize}
 \cite{Rethinkspec}
-
-The Baxter cobot is a highly flexible robotic manipulator, which have built-in safety features in the form of sensors and cameras. The robot features embedded cameras, and force recognition, to recognize and act upon collisions. This combined with its limited force, makes the Baxter very safe around humans.
-The camera is 1280p x 800p with 30 frames per second, and the infrared sensor has a range of 4-40 cm, 
+\\
+The Baxter robot is a highly flexible collaborative robotic manipulator, with built in sensors and cameras, that allows the robot to see and adapt to its environment.\\
+The robot features embedded cameras, and force recognition, to recognize and act upon collisions. This combined with its limited force, makes the Baxter safe around humans.
+The camera is 1280p x 800p with 30 frames per second, and the infrared sensor has a range of 4-40 cm. 
 It also has additional sensors around the end-effector, that allows it to analyze the object it is holding. \\
-One part of its flexibility is the ability to adapt to new work environments on the go, using the sensors around its head. Another part is the ability to move. The Baxter robot can be placed on a four legged pedestal, that allows it to move around. \\
-While this robot could have been a good consideration for the task, its availability is limited to certain countries, and is not available in Denmark. For
-\cite{retinkbaxter}
+One part of its flexibility is the ability to adapt to new work environments on the go, using the sensors around its head. Another part is the ability to move. The Baxter robot can be placed on a four legged pedestal, which allows it to move around. \\
+While this robot could have been a good consideration for the task, its availability is limited to certain countries, and is not available in Denmark\cite{rethinkbaxter}.
 
+\subsection{UR}
+
+Universal Robots was founded in 2005 by a group of Danish engineers. Their thought was, that every industrial robot on the market was designed to be big, heavy and expensive. Therefore the group decided to make a smaller and more agile kind of industrial robot.\cite{Urhist}\\
+Here are the specification for the UR5:\\ 
+
+\subsubsection{Specifications for UR5}
+
+\begin{itemize}
+    \item Weight: 18.4 kg.
+    \item Payload: 5 kg.
+    \item Footprint: 149 mm.
+    \item Joints: +/-360 degrees on all the joints.
+    \item Operating life: 35,000 Hours.
+    \item Speed: joints = 180 degrees/sec, tool = 1 m/sec.
+    \item Reach: 850 mm.
+    \item Repeatability: +/- 0.1 mm.
+\end{itemize}
+
+The materials used on all the cobots are aluminum and plastic\cite{Ur5_about}\cite{UR5_tech}.\\
+
+\begin{figure}
+    \centering
+    \includegraphics[width=9cm]{UR/UR5pic.jpg}
+    \caption{Universal Robots UR5 \cite{UR5billede}}
+    \label{fig:UR5}
+\end{figure}
 
 
 \subsection{Why cobots?}\label{ch:Whycobot}
 Why is there a need for a cobot? A thing that is mentioned in an article about cobots, in an assembly line, is that cobots can help reduce the ergonomics stress level of the employees\cite{Coboau}. Another way this can help the production flow, is that the robot can preform some tedious task while the employee can take care of the complex tasks in the work area.\\
+
 
 
 \input{TechnicalAnlysis/mobilplatform.tex}
@@ -86,5 +113,5 @@ Why is there a need for a cobot? A thing that is mentioned in an article about c
 %Having an overview of the different tasks that has to be preformed and using the tools that are given, the project can get closer to a conclusion for the robot.\\
 %The project has focused on two different cobots, 1 from KUKA, and 1 from UR. They are then set up to conclude which has the better specifications. By looking at nothing else than the specifications, the most suitable for this case is the UR5.\\
 
-\newpage
+
 

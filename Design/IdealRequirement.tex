@@ -13,21 +13,27 @@
 %\end{itemize}
 \section{Delimitations} \label{ch:Delimitations}
 
-The requirements for the ideal robot is not what is available for the project. 
-The work-cell that is given to the group by AAU, is not nearly big enough to cover the desired reach of the manipulator. As the case describes, see \ref{fig:workcellMR}, the reach of the manipulator has to be the same as 2 meters. The ideal work-cell can simply not be downsized to a shorter distance, without having to close the work-cell completely from entry.\\
-To delimit the reach, a new solution had to be made, which is why the group decided to implement another manipulator on the opposite side of the Queue-table. This has to be delimited as well since the group do not have permission or knowledge to implement 2 UR5's on the same table.
-For testing purposes, the work-cell can be simulated in a 2:1 scale, requiring half the space, and making the tests possible. \\
-The required speed for the manipulator can in theory be done since the manipulator assigned to the group has a speed of 1m/s. The only delimitation is that, if the group want to get this speed, a default setting on the UR5 has to be overridden, so that it will be able to move at maximum velocity \cite{UserManual}.\\.
-Looking at the sensors, the only available sensor for the group is in the UR5, which is the pressure sensor. This is a delimitation for the safety process of this project. However, the sensors can be simulated with another method, for example a command that can be implemented in the code of the UR5.\\
+The requirements for the desired robot is not what is available for the project. 
+The work-cell that is given to the group by AAU, is not nearly big enough to cover the desired reach of the manipulator. As the case describes, see \ref{fig:workcellMR}, the reach of the manipulator has to be the same as 2 meters. The desired work-cell can simply not be downsized to a shorter distance, without having to close the work-cell completely from entry.\\
+To delimit the reach, a new solution had to be made, which is why the group decided to implement another manipulator on the opposite side of the Queue-table. This has to be delimited as well since the group do not have permission or knowledge to implement 2 UR5's on the same table.\\
+%For testing purposes, the work-cell can be simulated in a 2:1 scale, requiring half the space, and making the tests possible. \\
+The required speed for the manipulator can in theory be done since the manipulator assigned to the group has a speed of 1m/s. The only delimitation is that, if the group want to get this speed, a default setting on the UR5 has to be overridden. so that it will be able to move at maximum velocity \cite{UserManual}.\\.
+%Looking at the sensors, the only available sensor for the group is in the UR5, which is the pressure sensor. This is a delimitation for the safety process of this project. However, the sensors can be simulated with another method, for example a command that can be implemented in the code of the UR5.\\
 
+\newpage
 \section{Delimited requirement specifications}
 
-\begin{itemize}
-    \item The cycle time of the rotor may not exceed 26 seconds.
-    \item The visual inspection of the rotor inside the work-cell must be ergonomic.
-    \item The work-cell must comply with the ISO 10218-2 standards.
-    \item All the pick and place points in the work-cell must be within reach of the UR5.
-    \item The UR5 must be able to lift a weight of the rotor(645g) and the end-effector(UNKNOWN) at maximum reach.
-    \item The UR5 must perform various tasks depending on which sensor or signal that is active.
-    \item When a worker enters the work-cell the UR5 must slow its work pace, to reduce the risk of harmful behavior.
-\end{itemize}
+\begin{enumerate}
+    \item The cycle time of the rotor must not exceed 26 seconds.
+    \item It is required that the cobot differentiates the height of the rotor for visual inspection every hour. so the visual inspector is forced to not stay in the static position throughout the entire workday.
+    \item The emergency stops has to stop the entire work-cell.
+    \item The work-cell must have at least one emergency stop placed, so the worker can reach the stops without putting himself to harm.
+    \item The UR5 must be able to have a lifting capacity more than the total combined payload of the rotor(645g) and the end-effector(500g) at maximum reach.
+    \item The UR5 must perform this task when signalled by the placement sensor in:\\
+    1. Balancing machine: Put the rotor in the control-box, if the placement sensor has signalled that the prior rotor has been removed.\\
+    2. Leak testing machine: Put both rotors in the leak-test, make sure only to remove them when the two rotors has been tested. Ensure that the rotor has been balanced before inserting.\\
+    3. Engraving machine : The rotors orientation must be upside-down, while placing the rotor. Also ensure that the rotor that is picked has been in the 2 prior machines.
+    \item When a worker enters the work-cell, the velocity of the end-effector on the UR5 has to slow down to 0,1 m/s, to reduce the risk of harmful behaviour.\\
+    \item The rotor has to be placed whit in a radius of 1mm of a specific position. 
+    \end{enumerate}
+
