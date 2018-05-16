@@ -122,7 +122,7 @@ It was also concluded that one of the following solutions would be required for 
 \end{itemize} 
 Additionally, the desired sensors in the work-cell should be able to identify humans, detect the rotor which the robot is holding, detect the orientation of this rotor, and whether it is damaged. The sensors should also allow the robot in the work-cell to place the rotors correctly into each machine. It is also concluded that the robot should lift a payload greater than the end-effector and the L40 rotor combined.\\
 
-\chapter{Manipulators and Math}\label{ch:kinematics}
+\chapter{Trajectories}\label{ch:kinematics}
 
 In this chapter there will be described some mathematical expression of manipulators in general and for the UR5, and the trajectory planning of the UR5.
 
@@ -372,7 +372,11 @@ In figure \ref{fig:acceleration} the acceleration and deceleration of the 6 join
 \section{Conclusion}
 Describing a robot with forward kinematics and Denavit-Hartenberg parameters is used to locate the different joints and the tool in a 3D-space, so the robot can be manipulated and used for various tasks.\\
 Looking at Denavit-Hartenberg, the advantage of this method is to simplify the different axis in a matrix, so the operator and the robot can identify where the different coordinate systems are located.\\
-Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{i-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them into MATLAB while visualizing the robot and to locate the end-effector so the tasks can be performed.\\
+Forward kinematics is the starting point of selecting the DH-parameters, when we know the point $Z_{i-1}$ and $Z_1$ we can then locate every axis in the desired robot. Hereby conclude to DH-parameters and include them in to inverse kinematics.\\
+Inverse kinematics are used to find the different angles of the robot, so that it can be fully investigated and used in trajectories.\\ 
+When finding the angles of a 6 DOF robot, a lot of steps needs to be taken in to consideration. The thetas 1,5 and 6 can only be found by investigating the rotation matrice from forward kinematics, and inspecting the different angles and joints of the different posistions. While the thetas 2,3 and 4 can be looked upon as RRR parallels.\\
+The trajectories relies solely on the inverse kinematics, since it uses the different thetas and joints to investigate the posistion, velocity and acceleration. These graphs are a huge part of the investigation of how our robot moves.\\
+To conclude, the investigation of forward and inverse kinematic can be led in to parameters, that is used in the calculation of the movements of the manipulator.\\
 
 
 
