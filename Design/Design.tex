@@ -8,7 +8,7 @@
     \caption{work-cell with measurements and reach}
     \label{fig:workcellMR}
 \end{figure}
-\\
+
 When looking at \ref{fig:workcellMR}, a systematic work-cell is presented. But the important thing of a work-cell is its flow.\\
 Here is some sections about what is needed of the ideal work-cell.
 
@@ -59,7 +59,7 @@ The desired robot to have inside the work-cell, is intelligent, fast and can dec
 
 \subsection{Desired speed}
 
-The robot has 7 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 7, which will give the manipulator 3.7142 seconds to carry out the task.\\
+The robot has 6 tasks it needs to complete within 26 seconds. This means that the slowest possible speed it has to have per translation to other machines, while delivering the rotor, is 26 divided by 6, which will give the manipulator an average of 4.33 seconds to carry out each task.\\
 Taking the visual inspection in consideration, the number has to be lower when translating from the machines. The person inspecting might need something close to 5 seconds. Taking that into consideration a new formula for the speed of the cobot can be found.\\
 
 \begin{equation}
@@ -178,12 +178,12 @@ The distance between $X_{i-1}$ and $X_i$ is 0 since they cross each other on the
  i & $\alpha_{i-1}$ & $a_{i-1}$ & $d_{i}$ & $\theta_{i}$ \\ [0.5ex] 
  \hline 
  \hline
- 1 & 0 & 0 & 500 & $\theta_{1}$ \\ 
- 2 & -90 & 150 & 0 & $\theta_{2}$-90 \\
- 3 & 0 & 700 & 0 & $\theta_{3}$ \\
- 4 & -90 & 50 & 600 & $\theta_{4}$ \\
- 5 & 90 & 0 & 0 & $\theta_{5}$ \\ 
- 6 & -90 & 0 & 75 & $\theta_{6}$+180\\[1ex] 
+ 1 & 0 & 0 & 89.20 & $\theta_{1}$ \\ 
+ 2 & 90 & 0 & 0 & $\theta_{2}$+180 \\
+ 3 & 0 & 425 & 0 & $\theta_{3}$ \\
+ 4 & 0 & 392.43 & 109 & $\theta_{4}$ \\
+ 5 & -90 & 0 & 93.65 & $\theta_{5}$ \\ 
+ 6 & 90 & 0 & 82 & $\theta_{6}$+180\\[1ex] 
  \hline
 \end{tabular}
 \caption{DH-parameters for the UR5, using \cite{DHPar} as measurement.}
@@ -204,10 +204,10 @@ where roll is a rotation around the X axis, pitch is a rotation around the Y axi
 The way that rotations are represented for the UR 5 is called angle axis, the way to understand this is by having specific vectors for a certain rotation see figure \ref{fig:rpy-rep}. The vector is used as an axis that rotation is going about\cite{JohnC}.
 
 \subsection{Robot singularities}
-The American National Standard for Industrial Robots and Robot systems, define singularities as "a condition caused by the collinear alignment of two or more robot axes resulting in unpredictable robot motion and velocities".\\
+The American National Standard for Industrial Robots and Robot systems, define singularities as "\textit{a condition caused by the collinear alignment of two or more robot axes resulting in unpredictable robot motion and velocities}\cite{3Sing}".\\
 3 types of singularities can happen \cite{3Sing}.
 
-\paragraph{Wrist:} When 2 of the axis of the robots wrist joints, are parallel with each other, it can cause them to unintendedly spin 180 degrees.
+\paragraph{Wrist:} When 2 of the axis of the robots wrist joints, are parallel with each other, it can cause them to spin 180 degrees at an infinity velocity.
 \paragraph{Shoulder:} When the wrist aligns with the joint 1 axis, it will cause the shoulder part of the robot to spin 180 degrees in an instant, to try and follow the motion, same will happen if joint 1 and 6 line up with each other.
 \paragraph{Elbow:} Unlike the other 2, this singularity instead locks the elbow in a stretched position, and happens when the center of the robot's wrist ends up on the same plane as joints 2 and 3, and will look like the arm is fully stretched, and tried to reach too far.
 
@@ -224,21 +224,25 @@ This can be done by using the following formula \ref{fig:tdot}, and using the do
     \end{equation}\\
 Kinematics can be used to form an internal picture in a cartesian space  of the robot movements, and help understanding and explaining it.\\
 This is useful when working with not only manipulators, but also animations in movies and video games, or any other movement where multiple joints are used.\\
-\section{Inverse Kinematics}
-Inverse kinematics is used to compute the joint angles from a given position and orientation of an object \cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution, where the inverse kinematics is set up in Maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
-
-\subsection{Finding the theta's}
-These steps are inspired by Rasmus Skovgaard Andersem \cite{Rasmus}.
-Further calculations can be seen in a "maple" document attached with the document.\\
-\paragraph{Step 1:} Use the rotation matrix\\
+\paragraph{Transformation matrix}
+For calculating a transformation matrix to be used when testing,the DH-parameters and some angle values had to be used. The group choose 10, 20, 30, 40, 50 60, when inserting them into the previous mention matrices from \ref{fig:t01} to \ref{fig:t56} and using the dot-product as in \ref{fig:tdot}. The group derived at this matrix
 \begin{equation}
 \centering
 _6^0 T = \begin{bmatrix} -0.786357421476564 & -0.607604499854991 & 0.111618896951653 & -521.411309306909\\-0.527586986670956 & 0.566511110959708 & -0.633022221383129 & -256.142081438594\\
 0.321393804908450 & -0.556670399249454 & -0.766044443341916 & -419.593026103387 \\
 0 & 0 & 0 & 1\\ \end{bmatrix}
     \caption{Caption}
-    \label{fig:my_label}
+    \label{fig:transfomationM}
 \end{equation}\\
+
+\section{Inverse Kinematics}
+Inverse kinematics is used to compute the joint angles from a given position and orientation of an object \cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution, where the inverse kinematics is set up in Maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
+
+\subsection{Finding the theta's}
+These steps are inspired by \cite{Rasmus}.
+Further calculations can be seen in a "maple" document attached with the document.\\
+\paragraph{Step 1:} Use the transformation matrice \ref{fig:transfomationM}.\\
+
 
 \paragraph{Step 2:} find the matrice from 0 to 5.\\
 
@@ -252,7 +256,7 @@ _6^0 T = \begin{bmatrix} -0.786357421476564 & -0.607604499854991 & 0.11161889695
 The group found the matrice by dotting T06 with the minus translation of the tool.\\
 \begin{equation}
 \centering
-^5P_0 = _6^0 T.\begin{bmatrix} 0 \\ 0 \\ -d_6 \\ 1 \\ \end{bmatrix}=\begin{bmatrix}-530.564058856945\\ -204.234259285177\\ -356.777361749350\\ 1\end{bmatrix}
+^5P_0 = _6^0 T \cdot \begin{bmatrix} 0 \\ 0 \\ -d_6 \\ 1 \\ \end{bmatrix}=\begin{bmatrix}-530.564058856945\\ -204.234259285177\\ -356.777361749350\\ 1\end{bmatrix}
     \caption{Caption}
     \label{fig:rotmat}
 \end{equation}\\
@@ -319,30 +323,38 @@ Position, Velocity and Acceleration.
 These three polynomials can be described as the trajectory.\\
 In this section we denote the following:
 \begin{equation}
-    a_0 = Starting position \theta
+    a_0 =\theta_{start} 
 \end{equation}
 \begin{equation}
-    a_1 = Starting velocity
+    a_1 = \omega_{start}
 \end{equation}
 \begin{equation}
-    a_2 = \frac{3}{finish time} \cdot (\theta_{end} - \theta_start)
+    a_2 = \frac{3}{t_{finish}} \cdot (\theta_{end} - \theta_{start})
 \end{equation}
 \begin{equation}
-    a_3 = \frac{-2}{finish time} \cdot (\theta_end - \theta_start)
+    a_3 = \frac{-2}{t_{finish}} \cdot (\theta_{end} - \theta_{start})
 \end{equation}
 The position a is computed by \(\theta(t)\), which is described as: \[\theta(t)=a_0+a_1t+a_2t^2+a_3t^3\]
 This function can be used to describe the velocity and acceleration by using its derivatives\cite{JointTrajectories}:\[\Dot{\theta}(t)\] and \[\Ddot{\theta}(t)\]
 
 \subsection{Joint position}
-In figure \ref{fig:position} we are showing the rotational movements of the 6 joints on the UR5, when it is performing the task of moving the rotor from the conveyor belt, to the balancing machine.\\
-For each joint it is calculated using the formula: \[\theta(t)=a_0+a_1t+a_2t^2+a_3t^3\]
+In figure \ref{fig:position2} we are showing the rotational movements of the 6 joints on the UR5, when it is performing the task of moving the rotor from the conveyor belt, to the balancing machine.\\
+For each joint it is calculated using the formula: 
+\begin{equation}
+  \theta(t)=a_0+a_1t+a_2t^2+a_3t^3
+\end{equation}
 
 \subsection{Joint velocity}
-In figure \ref{fig:velocity} we calculate the movement speed of the 6 joints, we do this by using the derivative of the position formula, which then becomes \[\Dot{\theta}(t)=a_1+2a_2t+3a_3t^2\]
+In figure \ref{fig:velocity2} we calculate the movement speed of the 6 joints, we do this by using the derivative of the position formula, which then becomes
+\begin{equation}
+\Dot{\theta}(t)=a_1+2a_2t+3a_3t^2
+\end{equation}
 
 \subsection{Joint Acceleration}
-In figure \ref{fig:acceleration} the acceleration and deceleration of the 6 joints are calculated based on the joint position change, this is done by taking the double derivative of the position change formula, which then becomes: \[\Ddot{\theta}(t)=2a_2t+6a_3t\]
-
+In figure \ref{fig:acceleration} the acceleration and deceleration of the 6 joints are calculated based on the joint position change, this is done by taking the double derivative of the position change formula, which then becomes:
+\begin{equation}
+\Ddot{\theta}(t)=2a_2+6a_3t
+\end{equation}
 
 \subsubsection{From point 1: "Conveyor" to point 2: "Balancing", where t is from 0 to 2.6}
 
@@ -351,13 +363,13 @@ In figure \ref{fig:acceleration} the acceleration and deceleration of the 6 join
   \begin{minipage}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Design/poscb.png}
     \caption{Position for point 1 to 2}
-    \label{fig:position}
+    \label{fig:position2}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.45\textwidth}
     \includegraphics[width=\textwidth]{Design/velcb.png}
     \caption{Velocity for point 1 to 2}
-    \label{fig:velocity}
+    \label{fig:velocity2}
   \end{minipage}
 \end{figure}
 \begin{figure}[H]

@@ -24,6 +24,7 @@ The UR5 moves the rotor to each required point in 13 seconds or less.
 \paragraph{Results:}
 The UR5 moved the rotor from the conveyor belt to each required position in approximately 13 seconds. 
 
+
 \section{Test 2 - Ergonomics and signals.}
 
 In this test the group will test the UR5 ability to react upon signals from the visual inspection, while keeping the work-flow intact.\\
@@ -50,6 +51,7 @@ The UR5 is expected to lift the rotor from a height of 12 to 42 cm over the visu
 The worker was guided up in a position where he couldn't sit down, and then to a position where he could rest.\\
 When the rotor failed, a new trajectory was taken by the UR5, and the rotor was then "failed". The UR5 would quickly find its starting point again and begin the sequence all over.\\
 
+
 \section{Test 3 - Emergency stop}
 
 When an emergency stop is pressed the UR5 should stop entirely.\\
@@ -75,13 +77,13 @@ When the emergency stop on the teach pendant was activated, the manipulator stop
 The work-cell is a potentially dangerous environment to anyone entering it. The robots move around sharp rotors that could potentially cause injuries, despite the earlier mentioned safety measures. For this reason, it has been decided that an emergency stop button will be placed within reach of the employee performing the visual inspection.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Design/Work_cell_10.png.png}
+    \includegraphics[width=0.7\textwidth]{Design/Work_cell_10.png}
     \caption{Illustration for the fourth test.}
     \label{fig:fourthtest}
 \end{figure}
 Additionally, 7 emergency stop buttons are strategically placed inside the work-cell see \ref{fig:fourthtest}, so that the distance from the nearest emergency stop button is maximum 55 cm from anywhere inside the work-cell. When an emergency stop is pressed, the UR5 will stop entirely. With this setup, anyone inside the work-cell would be able to immediately stop the production, if any emergency situation should occur. \\
 \subsection{Setup of the test}
-The test will be performed by making a button emulate an external emergency stop.
+The test will be performed by making a button emulate an external emergency stop, this will connected to the safety input on the UR5 which are mark in yellow.
 
  \begin{itemize}
      \item UR5
@@ -94,7 +96,7 @@ The UR5 will stop completely when the emulated emergency stop is pushed
  
 \paragraph{Results: }
 
-
+The external emergency stop worked as expected, it stop the UR 5's process.
 
 
 \section{Test 5 - Payload}
@@ -184,7 +186,7 @@ It was expected that the UR5's emergency stop would work, since it is an integra
 
 \paragraph{Requirement 4:}
 
-
+The test of requirement of having more the just one emergency stop within the work-cell was test with only one external emergency stop. The fact that emergency stop by having a NC(normally closed) switch, that when the switch is activated it is open so that there is no continuity, the team expects that if all the emergency stops is connected in series, so if one is activated it effects the entire work-cell.  
 
 \paragraph{Requirement 5:}
 The UR5 was able to lift more than the required payload out to its maximum reach. This indicates that it will be able to lift the lighter rotor around into every required position at high speeds without breaking. This was expected since the stated payload of the UR5 is 5 kg. 

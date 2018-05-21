@@ -1,18 +1,13 @@
  \chapter{Technical Analysis} \label{TechAnalysis}
  
-The work cell regarding this project, consists of a number of machines and other articles used in the production of a rotor for one of the pumps at Grundfos. This chapter provides a description of these articles and their function in the work cell\cite{robotsave}. All the measurements noted in this analysis is based on the scale, which has been provided in the case description see \cite{Case}, due to the lack of information of the machine dimensions. \\ 
+The work cell regarding this project, consists of a number of machines and other articles used in the production of a rotor for one of the pumps at Grundfos. This chapter provides a description of these articles and their function in the work-cell\cite{robotsave}. All the measurements noted in this analysis is based on the scale, which has been provided in the case description see \cite{Case}, due to the lack of information of the machine dimensions. \\ 
  
 
 
  \section{Work-cell}
- The rotor arrives in the work-cell on a conveyor see \ref{fig:Layoutworkcell}, the rotor always has the same orientation and stops in same position, the conveyor has a sensor that activates a hardware pin when a new rotor is in place.\\
- The manipulator's control box then receives a signal from the sensor, which tells the manipulator the rotor is at the given position, then the can process begin.\\
-%\begin{figure}[H]
-%    \centering
-%   \includegraphics[width=\textwidth]{TechnicalAnlysis/layout.PNG}
-%    \caption{Preliminary layout of work-cell\cite{Case}}
-%    \label{fig:Layoutworkcell} 
-%\end{figure}
+ The rotor arrives in the work-cell on a conveyor see \ref{fig:Layoutworkcell}, the rotor always has the same orientation and stops in the same position, the conveyor has a sensor which activates a hardware pin when a new rotor is in place.\\
+ The manipulator's control box then receives a signal from the sensor, which tells the manipulator the rotor is at the given position, then the process can begin.\\
+
 
 %\begin{figure}[H]
 %    \centering
@@ -26,20 +21,27 @@ The work cell regarding this project, consists of a number of machines and other
 
 \node (start) [startstop] {The rotor arrives on conveyer};
 
-\node (pro1) [process, below of=start, yshift=-1cm] {The rotor is moved to balancing machine, and balancing commences};
-\node (pro2) [process, below of=pro1, yshift=-2cm] {The rotor is moved to visual inspection, and visual inspection commences};
+\node (pro1) [process, below of=start, yshift=-0.8cm] {The rotor is moved to balancing machine, and balancing commences};
 
-\node (dec1) [decision, below of=pro2, yshift=-2.3cm] {Did the rotor pass visual inspection?};
+\node (dec1) [decision, below of=pro1, yshift=-2.3cm] {Did the rotor pass balancing?};
 \node (out1) [io, right of=dec1, xshift=3.5cm] {Move the rotor to failed pile};
-\node (stop) [startstop, below of=dec1, yshift=-2cm] {The rotor is moved to the queue table};
+
+\node (pro2) [process, below of=dec1, yshift=-2.5cm] {The rotor is moved to visual inspection, and visual inspection commences};
+
+\node (dec2) [decision, below of=pro2, yshift=-2.3cm] {Did the rotor pass visual inspection?};
+\node (out2) [io, right of=dec2, xshift=3.5cm] {Move the rotor to failed pile};
+\node (stop) [startstop, below of=dec2, yshift=-1.5cm] {The rotor is moved to the queue table};
 
 \draw [arrow] (start) -- (pro1);
-\draw [arrow] (pro1) -- (pro2);
-\draw [arrow] (pro2) -- (dec1);
+\draw [arrow] (pro1) -- (dec1);
+\draw [arrow] (pro2) -- (dec2);
 
 \draw [arrow] (dec1) -- node[anchor=south] {no} (out1);
-\draw [arrow] (dec1) -- node[anchor=east] {yes} (stop);
+\draw [arrow] (dec1) -- node[anchor=east] {yes} (pro2);
 
+\draw [arrow] (dec2) -- node[anchor=south] {no} (out2);
+\draw [arrow] (dec2) -- node[anchor=east] {yes} (stop);
+\node (cap1) [Caption, below of=stop, yshift=0cm] {This flowchart shows the pick and place process from conveyor to queue table in the preliminary layout, see \ref{fig:Layoutworkcell}};
 
 \end{tikzpicture}
 
@@ -75,7 +77,7 @@ The work cell regarding this project, consists of a number of machines and other
 \draw [arrow] (dec2) -- node[anchor=east] {yes} (pro3);
 
 \draw [arrow] (pro3) -- (stop);
-
+\node (cap1) [Caption, below of=stop, yshift=0cm] {This flowchart shows the pick and place process from queue table to output pallet in the preliminary layout, see \ref{fig:Layoutworkcell}.};
 \end{tikzpicture} 
 
  
@@ -108,7 +110,7 @@ The work cell regarding this project, consists of a number of machines and other
 \caption{Balancing machine\cite{Case}}
 \label{fig:BalancingMachine}
 \end{figure}
-\\
+
 The balancing machine is 1.65m in width and 2.0m in length.\\
 The balancing machine is only capable of testing 1 rotor at a time.\\
 The machine consists of 2 rigid pedestals, with bearings and suspension on the top, supporting a mounting platform where the rotor will be placed hanging on the pedestals.\\
@@ -122,7 +124,7 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
  The rotor is placed standing upright with the longest part of the ensemble facing in to the hole of the cylinder. Then the leak machine will pressurize the rotor to a preset.\\
  The transducer inside the leak machine will be put into a zero state, and the different pressures will be applied. After stabilization the rotor will then be compared to the transducer towards the different pressure volumes, if the volumes differ too much an alarm limit will be triggered, and the visual signal lights will light red and await for an operator to re-activate it again. \\
  When the rotor passes, a green light will indicate the pass and the hatches around the rotor will be released and the pressure will be stabilized to the normal atmosphere  \cite{LEAK},\cite{LEAK2}. \\
- The UR5 needs to point the rotors in a 45 degree manner when inserting it into the cylinder, so that the rotor can be placed with a sliding trajectory. \\
+
  
  \begin{figure}[H]
     \centering
@@ -132,10 +134,10 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
 \end{figure}
  
  \subsection{Laser engraver}
- Before the rotor can be placed in the fixture of the engraving machine see \ref{fig:Laserengravermachine}, there is a need to check if there is already a rotor in the fixture or the rotor needs to be temporarily store at the buffer table. If the fixture is empty, the manipulator can place the rotor in the fixture, the rotor needs to place up side down in engraver. When the rotor is placed, the manipulators control box has to send a signal to the engraving machine that tells that it can begin the process. When the engraving is done a signal has to be send to the control box, that tells that the engraving machine is finished marking the rotor and can be stored on the pallet.\\
+ Before the rotor can be placed in the fixture of the engraving machine see \ref{fig:Laserengravermachine}, there is a need to check if there is already a rotor in the fixture or the rotor needs to be temporarily stored at the buffer table. If the fixture is empty, the manipulator can place the rotor in the fixture, the rotor needs to place up side down in engraver. When the rotor is placed, the manipulators control box has to send a signal to the engraving machine that tells that it can begin the process. When the engraving is done a signal has to be send to the control box, that tells that the engraving machine is finished marking the rotor and can be stored on the pallet.\\
  The engraving machine has a dimension of 0,7m width and 1,3m in length. \\
  It is used to engrave the part number ID of the rotor, there is space for one rotor per cycle.\\
- The engraver is made with a laser engraver from ROFIN, it uses a set of mirrors to control the laser beam\cite{laser}. The rotor is placed in a fixture inside the engraving machine, with a screen that protects people from the harmful laser beam, has to be closed, this can be done from a foot pedal. When the engraving is done the screen opens and the rotor can be stored at the pallet. \\   
+ The engraver is made with a laser engraver from ROFIN, it uses a set of mirrors to control the laser beam\cite{laser}. The rotor is placed in a fixture inside the engraving machine, with a screen that protects people from the harmful laser beam. When the engraving is done the screen opens and the rotor can be stored at the pallet. \\   
   
   \begin{figure}[h]
     \centering
@@ -145,18 +147,18 @@ Safety measures might have to be taken, if an employee has to enter the work-spa
   \end{figure}
   
  \subsection{Queue table}
- The queue table is a box with holes that serves as a temporary storage for the rotors. Up to 100 rotors can be placed here at any given point during the process to rest, and then be moved to the appropriate machine when they are ready. The queue table has a length and width of 51.5 cm. and a height of 80 cm\cite{Case}.\\  
+ The queue table is a box with holes that serves as a temporary storage for the rotors. Up to 100 rotors can be placed here at any given point during the process to be stored, and then be moved to the appropriate machine when they are ready. The queue table has a length and width of 51.5 cm. and a height of 80 cm\cite{Case}.\\  
  
  \subsection{Output pallet}
  When the rotors are complete, they can be moved to the output pallet, which can hold up to 320 rotors at a time. When the pallet is full, an employee will replace it with an empty pallet \cite{Case}.\\ 
  
 \subsection{Degrees of Freedom}\label{DOFSec}
 
-To pick and place the rotors, a manipulator must have a certain number of DOF (degrees of freedom). The minimum required DOF to lift and move an object is 3, since the cartesian space of the x,y and z, makes the movement of the object from point 1 to point 2 without changing the objects orientation and only moving it in a 2d space. Take for example a 1 DOF robot, this would only be able to move the object in a curved line.\\
+To pick and place the rotors, a manipulator must have a certain number of DOF (degrees of freedom). The minimum required DOF to lift and move an object is 3, since the cartesian space of the x,y and z, makes the movement of the object from point 1 to point 2 without changing the objects orientation and only moving it in a 2d space. Take for example a 1 DOF robot, this would only be able to move the object in a curved or straight line.\\
 The UR5 has 6 DOF, and can therefore move an object to any point within a 3-dimensional space. It can also apply pitch, roll and yaw to an object, thereby allowing it to rotate the object in any direction\cite{DOF}. \\ 
-In the work-cell which this project concerns, at least 6 DOF are required, since it is required to move the rotors around in the work-cell, as well as up and down, in order to pick them up, move them to a new location and place them down. It is also needed to rotate the rotors to the appropriate orientation before placing them. 
+In the work-cell which this project concerns, at least 6 DOF are required, since it is required to move the rotors around in the work-cell, as well as up and down, in order to pick them up, move them to a new location and placing them down. It is also needed to rotate the rotors to the appropriate orientation before placing them.
 
-\paragraph{Fixtures and holders:} There has to be made some assumption on the fixtures and holders, to plan for a robot that has a high enough accuracy to place the rotor in the position and orientation. The team made the assumption that fixtures and holder has tolerance of 1 mm when inserting a rotor. 
+\paragraph{Fixtures and holders:} There has to be made some assumption on the fixtures and holders, to plan for a robot that has a high enough accuracy to place the rotor in the position and orientation. The team made the assumption that fixtures and holder has a tolerance of 1 mm when inserting a rotor. 
 
  
  \section{Possible work-cell sensors}\label{ref:PlacementS}
