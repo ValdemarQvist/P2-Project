@@ -11,6 +11,7 @@
   \end{minipage}
   {Work-cell first and second part ,with polar coordinates and reach to suited the reach of the UR 5.}
 \end{figure}
+
 %Flowchart 1:
 \begin{tikzpicture}[node distance=2cm]
 
@@ -149,5 +150,72 @@ machine empty?};
 \end{tikzpicture}
 
 
+%Flowchart 1:
+\begin{tikzpicture}[node distance=2cm]
+
+%Primary nodes:
+\node (start) [startstop] {Rotor arrives V visual done};
+\node (dec1) [decision, below of=start, yshift=-1.5cm] {Is the balancing machine empty?};
+\node (pro1) [process, below of=dec1, yshift=-2cm] {Place the rotor in the balancing machine};
+\node (stop) [startstop, below of=pro1, yshift=-0.5cm] {Balancing done};
+
+%Primary arrows:
+\draw [arrow] (start) -- (dec1);
+\draw [arrow] (dec1) -- node[anchor=west] {yes} (pro1);
+\draw [arrow] (pro1) -- (stop);
+
+%Guideboxes: 
+\node (gui1) [Guidebox, left of=dec1, xshift=-1.25cm] {};
+\node (gui2) [Guidebox, above of=gui1, yshift=-1.9cm] {};
+\node (gui3) [Guidebox, left of=gui1, xshift=1.9cm] {};
+\draw [arrow] (dec1) -- node[anchor=south] {no} (gui3);
+
+\node (gui4) [Guidebox, left of=stop, xshift=-1.25cm] {};
+\node (gui5) [Guidebox, below of=gui4, yshift=1.9cm] {};
+\node (gui6) [Guidebox, left of=gui4, xshift=1.9cm] {};
+\draw [arrow] (gui6) -- (stop);
+
+\draw [arrow] (gui2) -- (gui5);
+
+\end{tikzpicture}
 
 
+
+
+%Flowchart 2:
+\begin{tikzpicture}[node distance=2cm]
+
+%Primary nodes:
+\node (start) [startstop] {Rotor arrives V visual done};
+\node (dec1) [decision, below of=start, yshift=-1.5cm] {Is the balancing machine empty?};
+\node (pro1) [process, below of=dec1, yshift=-2cm] {Place the rotor in the balancing machine};
+\node (dec2) [decision, below of=pro1, yshift=-2cm] {Is the balancing machine empty?};
+\node (pro2) [process, below of=dec2, yshift=-2cm] {Place the rotor in the balancing machine};
+\node (stop) [startstop, below of=pro2, yshift=-0.5cm] {Balancing done};
+
+%Primary arrows:
+\draw [arrow] (start) -- (dec1);
+\draw [arrow] (dec1) -- node[anchor=west] {yes} (pro1);
+\draw [arrow] (pro1) -- (dec2);
+\draw [arrow] (dec2) -- node[anchor=west] {yes} (pro2);
+\draw [arrow] (pro2) -- (stop);
+
+%Guideboxes: 
+\node (gui1) [Guidebox, left of=dec1, xshift=-1.25cm] {};
+\node (gui2) [Guidebox, above of=gui1, yshift=-1.9cm] {};
+\node (gui3) [Guidebox, left of=gui1, xshift=1.9cm] {};
+\draw [arrow] (dec1) -- node[anchor=south] {no} (gui3);
+
+\node (gui4) [Guidebox, left of=dec2, xshift=-1.25cm] {};
+\node (gui5) [Guidebox, above of=gui4, yshift=-1.9cm] {};
+\node (gui6) [Guidebox, left of=gui4, xshift=1.9cm] {};
+\draw [arrow] (dec2) -- node[anchor=south] {no} (gui6);
+
+\node (gui7) [Guidebox, left of=stop, xshift=-1.25cm] {};
+\node (gui8) [Guidebox, below of=gui7, yshift=1.9cm] {};
+\node (gui9) [Guidebox, left of=gui7, xshift=1.9cm] {};
+\draw [arrow] (gui9) -- (stop);
+
+\draw [arrow] (gui2) -- (gui8);
+
+\end{tikzpicture}
