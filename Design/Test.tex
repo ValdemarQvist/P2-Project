@@ -4,31 +4,10 @@
 In this phase of the project, a series of tests will be performed, in order to find out if the solution can fulfill the set requirements.\\ 
 All the videos and photos of the test's can be found in \ref{Ch:AppendixA}, and in the attached zip-files.
 
-\section{Test 1 - Cycle time}
-
-\paragraph{Testing Requirement 1:} The cycle time of the rotor must not exceed 26 seconds.\\
-In order to test this requirement, the cycle time of the first half of the entire process is tested with the UR5. The cycle in this test therefore consists of moving the rotor from the conveyor belt to the balancing machine, then on to the visual inspection, and at last place it on the queue table. Since this is only half the steps of the entire process see \ref{fig:first-part}, this cycle is expected to be performed in 13 seconds or less. 
-
-\subsubsection{Setup of the test}
-
-\begin{itemize}
-   \item A test rotor.
-   \item A wooden frame simulating the drawer in the balancing machine.
-   \item A fixture to simulate a hole in the queue table for the rotor to be placed in.
-   
-\end{itemize}
-
-\paragraph{Expected outcome:}
-The UR5 moves the rotor to each required point in 13 seconds or less. 
-
-\paragraph{Results:}
-The UR5 moved the rotor from the conveyor belt to each required position in approximately 13 seconds. 
-
-\paragraph{Video link: }
-See appendix \cite{testfilm}
 
 
-\section{Test 2 - Ergonomics and signals.}
+
+\section{Test 1 - Ergonomics and signals.}
 
 In this test the group will test the UR5 ability to react upon signals from the visual inspection, while keeping the work-flow intact.\\
 Testing Requirements, see \ref{ch:Delimitations}:
@@ -57,7 +36,7 @@ When the rotor failed, a new trajectory was taken by the UR5, and the rotor was 
 \paragraph{Video link: }
 See appendix \cite{testfilm}
 
-\section{Test 3 - Emergency stop}
+\section{Test 2 - Emergency stop}
 
 When an emergency stop is pressed the UR5 should stop entirely.\\
 Testing Requirements, see  \ref{ch:Delimitations}:\\
@@ -81,7 +60,7 @@ When the emergency stop on the teach pendant was activated, the manipulator stop
 \paragraph{Video link: }
 See appendix \cite{testfilm}
 
-\section{Test 4 - Multiple emergency stops}
+\section{Test 3 - Multiple emergency stops}
 The work-cell is a potentially dangerous environment to anyone entering it. The robots move around sharp rotors that could potentially cause injuries, despite the earlier mentioned safety measures. For this reason, it has been decided that an emergency stop button will be placed within reach of the employee performing the visual inspection.
 \begin{figure}[H]
     \centering
@@ -110,7 +89,7 @@ The external emergency stop worked as expected, it stop the UR 5's process.
 See appendix \cite{testfilm}
 
 
-\section{Test 5 - Payload}
+\section{Test 4 - Payload}
 The purpose of this test is to verify that the UR5 is able to carry the required payload of 1145 grams. In order to test this, the UR5 must pick up and hold an object of the required weight in its most stretched out position.
 
 \paragraph{Testing requirement 5:} The UR5 must be able to have a lifting capacity more than the total combined payload of the rotor(645g) and the end-effector(500g) at maximum reach.\\
@@ -134,7 +113,7 @@ The UR5 was successful in performing the test. It is therefore concluded that th
 \paragraph{Video link: }
 See appendix \cite{testfilm}
 
-\section{Test 6 - End-effector velocity}
+\section{Test 5 - End-effector velocity}
 When a worker enters the work-cell, the UR5's End-effector must not exceed 100mm/sec.
 
 Testing Requirements, see  \ref{ch:Delimitations}:
@@ -166,7 +145,7 @@ This did not meet the expectations of the group, however the noise graph comes t
 \paragraph{Video link: }
 See appendix \cite{testfilm}
 
-\section{Test 7 -Accuracy and repeatability}
+\section{Test 6 -Accuracy and repeatability}
 In this test, item number 8 from the delimitation will be tested. It is important in this pick and place scenario to place the rotor in the correct place every time. 
 
 \subsubsection{Setup of the test}
@@ -187,7 +166,54 @@ Shows that the UR5 could perform the task of being accurate within 0.1mm and uph
 \paragraph{Video link: }
 See appendix \cite{testfilm}
 
+\section{Test 7 - Cycle time}
 
+\paragraph{Testing Requirement 1:} The cycle time of the rotor must not exceed 26 seconds.\\
+In order to test this requirement, the cycle time of the first half of the entire process is tested with the UR5. The cycle in this test therefore consists of moving the rotor from the conveyor belt to the balancing machine, then on to the visual inspection, and at last place it on the queue table. Since this is only half the steps of the entire process see [Page 40], this cycle is expected to be performed in 13 seconds or less. 
+
+\subsubsection{Setup of the test}
+
+\begin{itemize}
+   \item A test rotor.
+   \item A wooden frame simulating the drawer in the balancing machine.
+   \item A fixture to simulate a hole in the queue table for the rotor to be placed in.
+   
+\end{itemize}
+
+\paragraph{Expected outcome:}
+The UR5 moves the rotor to each required point in 13 seconds or less. 
+
+\paragraph{Results:}
+The UR5 moved the rotor from the conveyor belt to each required position in approximately 13 seconds. In the next 3 figures the trajectories for the pick and place work-process is presented. The red lines indicate a position the robot is going through in seconds, here is the different positions : Begin at Conveyor @ time zero(this have no red line)
+\begin{enumerate}
+    \item Lift above conveyor @ time 2.5
+    \item Point between Lift and pre-balaning @ time 3.5
+    \item Pre inserting in balancing drawer @ time 5.0
+    \item Inserting in balancing Draw @ time 6.4
+    \item Visual inspection @ time 8.3
+    \item Point 1 between Viusal inspection and pre queue table @ time 11.1
+    \item Point 2 between Viusal inspection and pre queue table @ time 12.0
+    \item Pre queue table @ time 12.67
+    \item queue table @ time 13.43
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Design/Positionsgraf.png}
+    \caption{Position in degrees through the entire pick and place work-process}
+    \label{fig:posCyc}
+\end{figure}
+\begin{figure}[H]
+    \includegraphics[width = \textwidth]{Design/cycletimevel.png}
+    \caption{Velocity in degrees through the entire pick and place work-process}
+    \label{fig:velCyc}
+\end{figure}
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{Design/accelerationtrajectory.png}
+    \caption{Acceleration through the pick and place process}
+    \label{fig:accCyc}
+\end{figure}
+\paragraph{Video link: }
+See appendix \cite{testfilm}
 
 %\section{Test 5: }
 \section{Test discussions}
