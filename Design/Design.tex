@@ -97,6 +97,7 @@ This desired reach could also be accomplished by changing the setup to use 2 man
 
 \input{Design/Workflow2rob.tex}
 
+
 \subsection{Desired sensors}
 
 The robot should be able to identify humans, and collisions must be risk free, and not disrupt the work-flow. Optimally, the robot should also be able to identify what object it is holding, and if it is damaged or not. Additionally, the robot must be able to place the rotors correctly in the machines, using a depth sensing camera. \ref{depthcam}\\
@@ -132,6 +133,12 @@ The DH method can be used to compute every frame into parameters.\\
 These descriptions of the system can be used to translate every point and every movement of the robotic manipulator, with the help of forward kinematic.\\
 Initially the start is to locate all of the coordinate systems, as seen in \ref{table:1}.\\ 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Design/Afstand.PNG}
+    \caption{Link frames \cite{JohnC}}
+    \label{fig:linkFrame}
+\end{figure}
 
 \begin{itemize}
     \item ${a_{i-1}}$= The distance from ${Z_{i-1}}$ to ${Z_{i}}$ measured along ${X_{i-1}}$
@@ -227,24 +234,24 @@ This is useful when working with not only manipulators, but also animations in m
 For calculating a transformation matrix to be used when testing,the DH-parameters and some angle values had to be used. The group choose 10, 20, 30, 40, 50 60, when inserting them into the previous mention matrices from \ref{fig:t01} to \ref{fig:t56} and using the dot-product as in \ref{fig:tdot}. The group derived at this matrix
 \begin{equation}
 \centering
-_6^0 T = \begin{bmatrix} -0.786357421476564 & -0.607604499854991 & 0.111618896951653 & -521.411309306909\\-0.527586986670956 & 0.566511110959708 & -0.633022221383129 & -256.142081438594\\
-0.321393804908450 & -0.556670399249454 & -0.766044443341916 & -419.593026103387 \\
+_6^0 T = \begin{bmatrix} -0.7863 & -0.6076 & 0.1116 & -521.4113\\-0.5275 & 0.5665 & -0.6330 & -256.1420\\
+0.3213 & -0.5566 & -0.7660 & -419.5930 \\
 0 & 0 & 0 & 1\\ \end{bmatrix}
     \caption{Caption}
     \label{fig:transfomationM}
-\end{equation}\\
+\end{equation}
 
 \section{Inverse Kinematics}
-Inverse kinematics is used to compute the joint angles from a given position and orientation of an object \cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution, the one the team is using is the algebraic solution, where the inverse kinematics is set up in Maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
+Inverse kinematics is used to compute the joint angles from a given position and orientation of an object \cite{JohnC}. The inverse kinematic can be set up from two aspects, one is the geometric way and the other is an algebraic solution.\\
+The inverse kinematics is set up in Maple, a math computer program, where it makes it possible to be used later in computing the trajectory of the manipulator.\\
 
-\subsection{Finding the theta's}
-These steps are inspired by \cite{Rasmus}.
-Further calculations can be seen in a "maple" document attached with the document.\\
+\subsection{Investigating the angles}
+These steps are inspired by \cite{Rasmus}, and explaining the steps which are used to find the thetas for the joint angles on the UR5. Through the 7 steps in this section, there will be described the trigonometric rules to be used.\\ 
+All calculations can be seen in a "maple" document\cite{Maple} attached with the document.\\
 
-\paragraph{Step 1:} Use the transformation matrix \ref{fig:transfomationM}.This transformation matrix will be used to calculate the angles the UR 5 will have at this specif rotation and position.\\
+\paragraph{Step 1:} Use the transformation matrix \ref{fig:transfomationM}.This transformation matrix will be used to calculate the angles the UR 5 will have at this specif rotation and position.
 
-
-\paragraph{Step 2:} Find $^5P_0$ this gives information on the position with respect from frame 5 to base.This gives two 90 degree triangle see \ref{fig:rasmus1}.\\
+\paragraph{Step 2:} Find $^5P_0$ this gives information on the position with respect from frame 5 to base.This gives two 90 degree triangle see \ref{fig:rasmus1}.
 
 \begin{figure}[H]
     \centering
@@ -253,30 +260,29 @@ Further calculations can be seen in a "maple" document attached with the documen
     \label{fig:rasmus1} 
 \end{figure}
 
-The group found the matrice by dotting $_6^0 T$ with the minus translation of the tool.\\
+The group found the matrice by dotting $_6^0 T$ with the minus translation of the tool.
 \begin{equation}
 \centering
-^5P_0 = _6^0 T \cdot \begin{bmatrix} 0 \\ 0 \\ -d_6 \\ 1 \\ \end{bmatrix}=\begin{bmatrix}-530.564058856945\\ -204.234259285177\\ -356.777361749350\\ 1\end{bmatrix}
+^5P_0 = _6^0 T \cdot \begin{bmatrix} 0 \\ 0 \\ -d_6 \\ 1 \\ \end{bmatrix}=\begin{bmatrix}-530.5640\\ -204.2342\\ -356.7773\\ 1\end{bmatrix}
     \caption{Caption}
     \label{fig:rotmat}
-\end{equation}\\
+\end{equation}
 
 
 \paragraph{Step 3:} Find theta 1.\\
 Theta 1 was found by looking at \ref{fig:rasmus1}.\\ Inspecting the figure \ref{fig:rotmat}, a matrice can be seen, it is then needed to look upon the x and the y of the matrice to compute the first angle $\phi_1$. Now that the two opposite cathetus' is known, simply extract the tangens of these two and $\phi_1$ is found.\\
 The reason tangens is used is because the measurements of our opposite cathetus' was found, which is used to find the angle $\phi_1$.\\
 To find $\phi_2$, it is needed to use the law of cosines, since $d_4$ is known, and x and y of the hypotenuse.\\
-Now a simple math equation can be made which is plussing the $\phi$ together with $frac{\pi}{2}$, and then by adding $\frac{180}{\pi}$, the degrees of $\theta_1$ can be found:\\
-(The outcome was expected to be 10 degrees.)\\
+Now a simple math equation can be made which is plussing the $\phi$ together with $\frac{\pi}{2}$, and then by adding $\frac{180}{\pi}$, the degrees of $\theta_1$ can be found:
+
 
 \begin{equation}
 \centering
-\theta_1 = \frac{(\phi_1+\phi_2)\cdot180}{\pi} = 9.99999
+\theta_1 = \frac{(\phi_1+\phi_2)\cdot180}{\pi} = 10
 \end{equation}\\
 
 
 \paragraph{Step 4:} Find theta 5.\\
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Design/06.png}
@@ -289,31 +295,76 @@ Excluding $_1^0T$, a new matrice can then be examined: $_6^1T$.
 Using the y, which is $^{-1}P_{6y}$, can be looked upon as $d_4+d_6\cdot\cos{\theta_5}$.
 $^1P_6$ can then be expressed as the rotation of $^0P_6$ around $z_1$, where the y's are expressed as $\sin{\theta_1}and\cos{\theta_1}$.
 By using the transformation matrice $_6^0T$, see \ref{fig:transfomationM}, we can then use the arccos, which is the value of the x and y and then add it into the equation.\\
-Using the left-hand rule the $\theta_5$ can stand alone and the equation will look like this:\\
-(Expected outcome is 50 degrees.)\\
+Using the left-hand rule the $\theta_5$ can stand alone and the equation will look like this:
 \begin{equation}
 \centering
-\large\theta_1 =\frac{arccos\cdot\frac{(-521.411\cdot Sin(\theta_1)-(-256.142)\cdot Cos(\theta_1)-d_4}{d_6}\cdot 180}{\pi}=49.99995
+\large\theta_1 =\frac{arccos\cdot\frac{(-521.411\cdot Sin(\theta_1)-(-256.142)\cdot Cos(\theta_1)-d_4}{d_6}\cdot 180}{\pi}=50
 \end{equation}\\
 
 
 \paragraph{Step 5:} Find theta 6.\\
 
-The group found theta 6 by combining the different parameters from the rotation matrix, see \ref{fig:rotmat}.\\
-The x and y parameters was used and then the tangent of the two parameters was found and inserted in the equation of theta 6.
-The result was expected to be 60 degrees.\\
+Theta 6 was found by combining the different parameters from the rotation matrix, see \ref{fig:rotmat}.\\
+Knowing that the x and y parameters is considered a rotation by theta 1 in the xy-plane. To determine the equation, $\sin{\theta_5}$ is needed. Since this determines the polar coordinates of the angle, and if it's 0 then it will be undetermined.
 
 \begin{equation}
 \centering
-\theta_6 = \frac{^1_2 P}{\pi} \cdot 180 = 59.999999999
-\label{}
+_2^1P = Atan(\frac{(_6^0X_y\cdot\sin{\theta_1}+_6^0Y_y\cdot\cos{\theta_1})}{\sin{\theta_5}},\frac{(_6^0X_x\cdot\sin{\theta_1}+_6^0Y_x\cdot\cos{\theta_1})}{\sin{\theta_5}})
+\label{P12}
 \end{equation}\\
 
-Knowing that the x and y parameters is considered a rotation by sine to theta 1, the sine and cosines were placed behind the parameters, respectively sin after x and cos after y, and lastly divided with the sine to theta 5.
+The x and y parameters was used and then the tangent of the two parameters was found and inserted in the equation of theta 6.
 
-\paragraph{Step 6:} Find theta 2,3 and 4.\\
+\begin{equation}
+\centering
+\theta_6 = \frac{_2^1P}{\pi} \cdot 180 = 60
+\label{theta6}
+\end{equation}\\
 
-The following thetas are parallel and can be reviewed in the attached maple document.\\
+\paragraph{Step 6:} Find theta 3.\\
+
+The following angle can be found by investigating $_4^1T$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Design/theta234.png}
+    \caption{Angles and frames of T14 \cite{Rasmus}} 
+    \label{fig:rasmus3} 
+\end{figure}
+
+using the length of $_4^1P$, the law of cosines is used toward the oppoiste cathetus' angle:
+\begin{equation}
+   \large \theta_3=\frac{arccos\cdot(\frac{(\|_4^1P\|-a_2^2-a_3^2)}{2\cdot(a_2\cdot a_3)})\cdot180}{\pi}=30
+\end{equation}
+
+\paragraph{Step 7:} Find theta 2.\\
+
+$\phi_1$ and $\phi_2$, will be calculated, since $\theta_2$ is equal to $\phi_1-\phi_2$ .\\
+Firstly $_4^1T$ rotation matrice has to be looked upon, since $\phi_1$ can be measured by taking the tangens of its cathetus'.
+\begin{equation}
+  \large  \phi_1 = Atan2(-_4^1Y,-_4^1x)
+\end{equation}
+
+now that we have the angle $\phi_1$, $\phi_2$ an be calculated.
+in the next equation sinus will be used since we know the opposite cathetus and the hypotinuse:
+
+\begin{equation}
+   \large \phi_2 = arcsin(\frac{a_3\cdot\sin{\phi_1}}{_4^1P})
+\end{equation}
+
+now $\theta_2$ can be computed:
+
+\begin{equation}
+    \theta_2 = \frac{(\phi_1-\phi_2)\cdot180}{\pi}=20
+\end{equation}
+
+\paragraph{Find theta 4}
+
+The last angle can be derived from the rotation matrix $_4^3P$. This angle is measured around $Z_4$, hereby the tangens can be used to calculate the remaining angle:
+
+\begin{equation}
+    \theta_4 = Atan2(^3X_4y, ^3X_4x) = 40
+\end{equation}
 
 
 \section{Trajectories}

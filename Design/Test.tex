@@ -169,7 +169,7 @@ See appendix \cite{testfilm}
 \section{Test 7 - Cycle time}
 
 \paragraph{Testing Requirement 1:} The cycle time of the rotor must not exceed 26 seconds.\\
-In order to test this requirement, the cycle time of the first half of the entire process is tested with the UR5. The cycle in this test therefore consists of moving the rotor from the conveyor belt to the balancing machine, then on to the visual inspection, and at last place it on the queue table. Since this is only half the steps of the entire process see [Page 40], this cycle is expected to be performed in 13 seconds or less. 
+In order to test this requirement, the cycle time of the first half of the entire process is tested with the UR5. The cycle in this test therefore consists of moving the rotor from the conveyor belt to the balancing machine, then on to the visual inspection, and at last place it on the queue table. Since this is only half the steps of the entire process see [Figure on page 40], this cycle is expected to be performed in 13 seconds or less. 
 
 \subsubsection{Setup of the test}
 
@@ -184,17 +184,18 @@ In order to test this requirement, the cycle time of the first half of the entir
 The UR5 moves the rotor to each required point in 13 seconds or less. 
 
 \paragraph{Results:}
-The UR5 moved the rotor from the conveyor belt to each required position in approximately 13 seconds. In the next 3 figures the trajectories for the pick and place work-process is presented. The red lines indicate a position the robot is going through in seconds, here is the different positions : Begin at Conveyor @ time zero(this have no red line)
+The UR5 moved the rotor from the conveyor belt to each required position in approximately 13.3 seconds. Although this, at first glance will give a cycle time above the required 26 seconds. It is only with the first rotor that the cycle time will be above the requirement.\\
+After the first rotor, each cycle time will be approximately 13 seconds, with the assumption that the processing of the rotor in the second part of the work-cell will be approximately the same time as the first. In the next 3 figures the trajectories for the pick and place work-process is presented. The red lines indicate a position the robot is going through in seconds, here is the different positions: Begin at Conveyor @ time zero(this have no red line)
 \begin{enumerate}
     \item Lift above conveyor @ time 2.5
     \item Point between Lift and pre-balaning @ time 3.5
     \item Pre inserting in balancing drawer @ time 5.0
     \item Inserting in balancing Draw @ time 6.4
     \item Visual inspection @ time 8.3
-    \item Point 1 between Viusal inspection and pre queue table @ time 11.1
-    \item Point 2 between Viusal inspection and pre queue table @ time 12.0
-    \item Pre queue table @ time 12.67
-    \item queue table @ time 13.43
+    \item Point 1 between visual inspection and pre queue table @ time 11.1
+    \item Point 2 between visual inspection and pre queue table @ time 12.0
+    \item Pre queue table @ time 12.6
+    \item queue table @ time 13.3
 \end{enumerate}
 
 \begin{figure}[H]
@@ -203,12 +204,12 @@ The UR5 moved the rotor from the conveyor belt to each required position in appr
     \label{fig:posCyc}
 \end{figure}
 \begin{figure}[H]
-    \includegraphics[width = \textwidth]{Design/cycletimevel.png}
+    \includegraphics[width = \textwidth]{Design/Dpers.jpg}
     \caption{Velocity in degrees through the entire pick and place work-process}
     \label{fig:velCyc}
 \end{figure}
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{Design/accelerationtrajectory.png}
+    \includegraphics[width=\textwidth]{Design/Accelerationgraf1.png}
     \caption{Acceleration through the pick and place process}
     \label{fig:accCyc}
 \end{figure}

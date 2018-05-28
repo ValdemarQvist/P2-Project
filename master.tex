@@ -45,12 +45,15 @@
 %Caption rectangle:
 \tikzstyle{Caption} = [rectangle, minimum width=0cm, minimum height=0cm, text centered, text width=14.5cm]
 
+%Black dots:
+\tikzstyle{Blackdot} = [circle, minimum width=0.6cm, minimum height=0.6cm, text centered, text width=0.1cm, draw=black, fill=black!200]
+
 
 \begin{document}
 %frontmatter
 \frontmatter
 \pagestyle{empty} %disable headers and footers
-\pagenumbering{arabic} %use roman page numbering in the frontmatter
+\pagenumbering{gobble} %use roman page numbering in the frontmatter
 \input{frontmatter/frontpage}
 \input{frontmatter/titlepage.tex}
 \input{frontmatter/preface}
@@ -60,7 +63,7 @@
 
 
 \cleardoublepage
-
+\pagenumbering{arabic}
 %mainmatter
 \mainmatter
 \input{Introduction/Introduction.tex}

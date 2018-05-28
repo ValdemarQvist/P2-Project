@@ -1,12 +1,20 @@
  \chapter{Technical Analysis} \label{TechAnalysis}
  
-The work cell regarding this project, consists of a number of machines and other articles used in the production of a rotor for one of the pumps at Grundfos. This chapter provides a description of these articles and their function in the work-cell\cite{robotsave}. All the measurements noted in this analysis is based on the scale, which has been provided in the case description see \cite{Case}, due to the lack of information of the machine dimensions. \\ 
+The work cell regarding this project, consists of a number of machines and other articles used in the production of a rotor for one of the pumps at Grundfos. This chapter provides a description of these articles and their function in the work-cell\cite{robotsave}. All the measurements noted in this analysis is based on the scale, which has been provided in the case description see \cite{Case}, due to the lack of information of the machine dimensions. \\
+At the end of this chapter a final problem formulation will be stated.\\
  
 
 
  \section{Work-cell}
  The rotor arrives in the work-cell on a conveyor see \ref{fig:Layoutworkcell}, the rotor always has the same orientation and stops in the same position, the conveyor has a sensor which activates a hardware pin when a new rotor is in place.\\
  The manipulator's control box then receives a signal from the sensor, which tells the manipulator the rotor is at the given position, then the process can begin.\\
+ 
+ \subsection{Basic flowchart symbols and their meaning}
+ \begin{figure}[H]
+  \centering
+    \includegraphics[width=\textwidth]{TechnicalAnlysis/Basics.jpg}
+    \caption{The symbols being used in the flowcharts \cite{FlowChartRef}.}  \label{fig:BasicSymbols}
+\end{figure}
 
 
 %\begin{figure}[H]
